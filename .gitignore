@@ -1,64 +1,11 @@
-# Python
-__pycache__/
-*.py[cod]
-.pytest_cache/
-.venv/
-*.egg-info/
 node_modules/
 dist/
-server-dist/
-
-# Local configuration and secrets
 .env
 .env.*
 !.env.example
-
-# Runtime state and biometric data
-management_app/spas.db
-ml_pipeline/demo_app/data/
-ml_pipeline/demo_app/models/
-ml_pipeline/demo_app/*.pid
-
-# Trained models and generated ML outputs
-*.pt
-*.pth
-*.onnx
-*.npy
-*.npz
-ml_pipeline/outputs/
-
-# The two runtime checkpoints are intentionally versioned with Git LFS.
-!/models/
-!/models/face_best.pt
-!/models/facenet_best.pt
-
-# Notebook and operating-system clutter
-.ipynb_checkpoints/
+runtime/
+services/*/runtime/
+.codebase-memory/
+.codegraph/
 .DS_Store
 Thumbs.db
-
-# Local experiments outside the tracked application
-/artifacts/
-/data/
-/runtime/
-/.codebase-memory/
-/.codegraph/
-/AI-main/
-/.conda/
-/docs/
-/ml_pipeline/README.md
-/ml_pipeline/pyproject.toml
-/ml_pipeline/kaggle_detector_kernel/
-/ml_pipeline/kaggle_kernel/
-/ml_pipeline/kaggle_recognition_kernel/
-/ml_pipeline/remote_kernel/
-/ml_pipeline/scripts/
-/ml_pipeline/src/
-/ml_pipeline/tests/
-/*.ipynb
-/a.py
-/capstone_ekyc_cccd.tex
-/main.tex
-/web/
-/management_app/
-/services/*/runtime/

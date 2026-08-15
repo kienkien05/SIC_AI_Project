@@ -8,11 +8,11 @@ importers:
 
   .: {}
 
-  apps/web:
+  frontend:
     dependencies:
       '@spas/contracts':
         specifier: workspace:*
-        version: link:../../packages/contracts
+        version: link:../packages/contracts
       react:
         specifier: ^19.2.8
         version: 19.2.8
