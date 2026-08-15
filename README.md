@@ -1,85 +1,44 @@
 # SPAS — Smart Passive Attendance System
 
-Hệ thống điểm danh lớp học qua camera, gồm cổng học vụ và dịch vụ AI nhận diện khuôn mặt. Đây là bản demo phục vụ đồ án: phát hiện khuôn mặt, căn chỉnh theo landmark, nhận diện bằng embedding FaceNet và đăng ký khuôn mặt có hướng dẫn tư thế.
+Repository này là bản **chạy đầy đủ hệ thống**: cổng học vụ, AI nhận diện khuôn mặt, model đã train và Docker Compose. Clone về là có thể khởi động demo; notebook training, data nghiên cứu và báo cáo không nằm trong repository triển khai.
 
-## Chức năng chính
+## Thành phần
 
-- Cổng sinh viên, giáo viên và quản trị: thời khóa biểu, lớp học, trạng thái điểm danh và quản lý sinh viên.
-- Đăng ký khuôn mặt theo 4 tư thế ổn định: `thẳng → trái → phải → thẳng`.
-- Phát hiện nhiều khuôn mặt bằng YOLO, căn chỉnh bằng MTCNN landmark và nhận diện bằng FaceNet 512-D.
-- Camera điểm danh thời gian thực, ghi nhận sinh viên được nhận diện vào hệ thống.
-- Quản trị viên xem thông tin sinh viên, ảnh đã đăng ký và đặt lại đăng ký khuôn mặt.
+| Service | Port | Vai trò |
+| --- | ---: | --- |
+| `portal` | `8600` | Đăng nhập theo role, lớp học, thời khóa biểu, enrollment và điểm danh |
+| `ai` | `8503` | YOLO detection, MTCNN landmark alignment, FaceNet embedding/recognition |
 
-## Kiến trúc
+Model runtime được lưu bằng Git LFS:
 
-```mermaid
-flowchart LR
-    Camera[Camera lớp học] --> Portal[Cổng học vụ :8600]
-    Portal -->|frame| AI[Dịch vụ AI :8503]
-    AI --> Detect[YOLO face detector]
-    Detect --> Align[MTCNN 5-point alignment]
-    Align --> Embed[FaceNet embedding]
-    Embed --> Gallery[Face gallery]
-    Portal --> DB[(SQLite)]
-```
+- `models/face_best.pt`: YOLO face detector.
+- `models/facenet_best.pt`: FaceNet recognition 512-D đã fine-tune.
 
-## Cấu trúc repository
-
-```text
-management_app/                        Cổng học vụ và SQLite
-ml_pipeline/demo_app/                  FastAPI inference/enrollment
-ml_pipeline/kaggle_detector_kernel/    Notebook train YOLO detector trên Kaggle
-ml_pipeline/kaggle_recognition_kernel/ Notebook fine-tune FaceNet trên Kaggle
-ml_pipeline/src/                       Mã pipeline/train dùng lại
-docs/                                  Báo cáo, EDA và quyết định mô hình
-```
+Database SQLite và dữ liệu enrollment/gallery chạy trong Docker volumes, không nằm trên GitHub.
 
 ## Yêu cầu
 
-- Windows/Linux, Python `3.11` khuyến nghị (Python `3.12` cũng đã dùng cho demo).
-- Webcam để thử đăng ký/điểm danh; GPU CUDA là tùy chọn khi chạy inference cục bộ.
-- Hai file trọng số do nhóm tự train: `face_best.pt` và `facenet_best.pt`.
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) đang chạy.
+- Git LFS. Cài lần đầu bằng `git lfs install`.
+- Webcam và trình duyệt hiện đại để enrollment/điểm danh realtime.
 
-## Cài đặt và chạy
-
-Clone repository, sau đó mở **hai terminal** tại thư mục dự án.
-
-### 1. Chuẩn bị trọng số AI
-
-Không commit trọng số, gallery, ảnh đăng ký hoặc database lên GitHub. Tạo thư mục sau và chép hai file đã train vào đó:
+## Clone và chạy
 
 ```powershell
-New-Item -ItemType Directory -Force ml_pipeline\demo_app\models
-Copy-Item C:\duong-dan\face_best.pt ml_pipeline\demo_app\models\face_best.pt
-Copy-Item C:\duong-dan\facenet_best.pt ml_pipeline\demo_app\models\facenet_best.pt
+git lfs install
+git clone https://github.com/kienkien05/SIC_AI_Project.git
+cd SIC_AI_Project
+Copy-Item .env.example .env
+docker compose up --build
 ```
 
-`face_best.pt` là YOLO detector; `facenet_best.pt` là mô hình FaceNet recognition. Nếu đặt ở vị trí khác, cấu hình biến `FACE_DETECTOR_PATH` và `FACE_RECOGNITION_PATH` trước khi chạy.
+Khi hai service có log `Application startup complete`, mở [http://127.0.0.1:8600](http://127.0.0.1:8600). Docker tự nối portal tới AI; không cần chạy hai terminal hay cấu hình đường dẫn model.
 
-### 2. Chạy dịch vụ AI (terminal 1)
+Nếu clone trước khi cài Git LFS, kéo model bằng:
 
 ```powershell
-cd ml_pipeline\demo_app
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-uvicorn server:app --host 127.0.0.1 --port 8503
+git lfs pull
 ```
-
-Kiểm tra tại [http://127.0.0.1:8503/docs](http://127.0.0.1:8503/docs).
-
-### 3. Chạy cổng học vụ (terminal 2)
-
-```powershell
-cd management_app
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-$env:SPAS_SESSION_SECRET = "thay-bang-chuoi-ngau-nhien-khi-deploy"
-uvicorn app:app --host 127.0.0.1 --port 8600
-```
-
-Mở [http://127.0.0.1:8600](http://127.0.0.1:8600). Đảm bảo dịch vụ AI ở cổng `8503` chạy trước khi dùng đăng ký khuôn mặt hoặc quét điểm danh.
 
 ## Tài khoản demo
 
@@ -87,28 +46,32 @@ Mở [http://127.0.0.1:8600](http://127.0.0.1:8600). Đảm bảo dịch vụ AI
 - Giáo viên: `GV001` / `gv123`
 - Sinh viên: `SV001` / `sv123`
 
-Đổi các tài khoản trên trước khi triển khai.
+## Luồng sử dụng
 
-## Kiểm tra nhanh
+1. Đăng nhập sinh viên và mở **Tài khoản cá nhân** để đăng ký khuôn mặt.
+2. Làm theo hướng dẫn `thẳng → trái → phải → thẳng`; hệ thống tự chụp 8 frame đạt điều kiện.
+3. Đăng nhập giáo viên, mở lớp được phân công và bật **quét điểm danh realtime**.
+4. AI phát hiện mọi khuôn mặt trong frame, căn chỉnh landmark, so embedding với gallery và portal ghi nhận sinh viên thuộc lớp đó.
+5. Quản trị viên vào **Quản lý sinh viên** để xem trạng thái và reset enrollment khi cần.
+
+## Dữ liệu persistent
+
+| Dữ liệu | Nơi lưu | Xóa/reset |
+| --- | --- | --- |
+| Tài khoản, lớp và điểm danh | Docker volume `portal_data` | `docker compose down -v` |
+| Face gallery và enrollment crops | Docker volume `ai_data` | `docker compose down -v` |
+
+`docker compose down` chỉ dừng service và giữ dữ liệu. Dùng `docker compose down -v` chỉ khi muốn xóa toàn bộ dữ liệu demo.
+
+## Cấu hình an toàn
+
+Sửa `SPAS_SESSION_SECRET` trong `.env` trước khi đưa lên server thật. Không commit database, ảnh khuôn mặt, gallery hoặc file `.env`.
+
+## Kiểm tra mã nguồn
 
 ```powershell
-cd management_app
-python self_check.py
-
-cd ..\ml_pipeline\demo_app
-python self_check.py
+python management_app\self_check.py
+python ml_pipeline\demo_app\self_check.py
 ```
 
-`management_app/self_check.py` thao tác dữ liệu test cục bộ trong `spas.db`; không chạy trên database triển khai thật.
-
-## Train lại trên Kaggle
-
-- `ml_pipeline/kaggle_detector_kernel/`: huấn luyện YOLO face detector với ảnh WIDER Face đã chuyển đổi nhãn YOLO.
-- `ml_pipeline/kaggle_recognition_kernel/`: fine-tune FaceNet cho bài toán embedding/face gallery.
-- Đầu ra cần đưa về demo là `face_best.pt` và `facenet_best.pt`; tạo lại gallery bằng luồng đăng ký khuôn mặt trên web.
-
-Chi tiết dataset, tiền xử lý và kết quả có trong `docs/` và `ml_pipeline/README.md`.
-
-## An toàn dữ liệu
-
-`.gitignore` đã loại bỏ trọng số, database, ảnh enrollment và face gallery. Trước khi public repository, kiểm tra lại bằng `git status` để chắc chắn không có khóa API, dữ liệu khuôn mặt hay tài khoản thật trong staged files. Đổi tài khoản demo và `SPAS_SESSION_SECRET` trước khi triển khai.
+Các lệnh self-check dùng dữ liệu local; không chạy chúng trên môi trường thật.

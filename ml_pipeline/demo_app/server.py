@@ -38,6 +38,15 @@ def find_model(env_name: str, filename: str) -> Path:
     return next((path for path in candidates if path.is_file()), Path(filename))
 
 
+@app.get("/health")
+def health() -> dict[str, str]:
+    detector = find_model("FACE_DETECTOR_PATH", "face_best.pt")
+    recognizer = find_model("FACE_RECOGNITION_PATH", "facenet_best.pt")
+    if not detector.is_file() or not recognizer.is_file():
+        raise HTTPException(503, "Face model files are missing.")
+    return {"status": "ok", "device": str(DEVICE)}
+
+
 @lru_cache
 def models() -> tuple[YOLO, InceptionResnetV1]:
     detector_path = find_model("FACE_DETECTOR_PATH", "face_best.pt")
