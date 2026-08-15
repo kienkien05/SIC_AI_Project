@@ -53,6 +53,8 @@ Demo accounts: `SV001/sv123`, `GV001/gv123`, `ADMIN001/admin123`.
 
 `FACE_AI_URL` and `FACE_AI_TOKEN` are supplied by the cloud-service owner. Without them, login and class viewing work, but enrollment and camera attendance cannot call Face AI.
 
+Each class stores one fixed `ca` instead of arbitrary start/end times. The timetable renders 13 standard periods: Ca 1 is `07:00–07:50`, Ca 8 is `14:25–15:15`, and Ca 13 is `19:15–20:05`.
+
 ## Security model
 
 - User session is an `HttpOnly`, HMAC-signed cookie issued by gateway.

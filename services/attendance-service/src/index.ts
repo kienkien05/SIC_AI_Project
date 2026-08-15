@@ -10,16 +10,20 @@ mkdirSync(dirname(file), { recursive: true });
 const db = new DatabaseSync(file);
 db.exec(`
   CREATE TABLE IF NOT EXISTS courses (code TEXT PRIMARY KEY, title TEXT NOT NULL);
-  CREATE TABLE IF NOT EXISTS sections (id INTEGER PRIMARY KEY, course_code TEXT NOT NULL, teacher_id TEXT NOT NULL, room TEXT NOT NULL, weekday INTEGER NOT NULL, start_time TEXT NOT NULL, end_time TEXT NOT NULL);
+  CREATE TABLE IF NOT EXISTS sections (id INTEGER PRIMARY KEY, course_code TEXT NOT NULL, teacher_id TEXT NOT NULL, room TEXT NOT NULL, weekday INTEGER NOT NULL, period INTEGER NOT NULL, start_time TEXT NOT NULL, end_time TEXT NOT NULL);
   CREATE TABLE IF NOT EXISTS enrollments (section_id INTEGER NOT NULL, student_id TEXT NOT NULL, PRIMARY KEY(section_id, student_id));
   CREATE TABLE IF NOT EXISTS attendance (section_id INTEGER NOT NULL, student_id TEXT NOT NULL, date TEXT NOT NULL, status TEXT NOT NULL, first_seen_at TEXT, PRIMARY KEY(section_id, student_id, date));
 `);
+const sectionColumns = db.prepare("PRAGMA table_info(sections)").all() as Array<{ name: string }>;
+if (!sectionColumns.some((column) => column.name === "period")) db.exec("ALTER TABLE sections ADD COLUMN period INTEGER");
+const backfillPeriod = db.prepare("UPDATE sections SET period=?,start_time=?,end_time=? WHERE id=? AND period IS NULL");
+[[1, "07:00", "07:50", 1], [8, "14:25", "15:15", 2], [4, "09:50", "10:40", 3]].forEach((row) => backfillPeriod.run(...row));
 const empty = db.prepare("SELECT COUNT(*) AS total FROM courses").get() as { total: number };
 if (!empty.total) {
   const course = db.prepare("INSERT INTO courses(code,title) VALUES(?,?)");
   [["INT101", "Nhập môn Trí tuệ nhân tạo"], ["WEB201", "Lập trình Web"], ["DAT102", "Cơ sở dữ liệu"]].forEach((row) => course.run(...row));
-  const section = db.prepare("INSERT INTO sections(id,course_code,teacher_id,room,weekday,start_time,end_time) VALUES(?,?,?,?,?,?,?)");
-  [[1, "INT101", "GV001", "A2-301", 0, "07:30", "09:30"], [2, "WEB201", "GV002", "A2-203", 2, "13:00", "15:00"], [3, "DAT102", "GV001", "B1-105", 4, "09:45", "11:45"]].forEach((row) => section.run(...row));
+  const section = db.prepare("INSERT INTO sections(id,course_code,teacher_id,room,weekday,period,start_time,end_time) VALUES(?,?,?,?,?,?,?,?)");
+  [[1, "INT101", "GV001", "A2-301", 0, 1, "07:00", "07:50"], [2, "WEB201", "GV002", "A2-203", 2, 8, "14:25", "15:15"], [3, "DAT102", "GV001", "B1-105", 4, 4, "09:50", "10:40"]].forEach((row) => section.run(...row));
   const enrollment = db.prepare("INSERT INTO enrollments(section_id,student_id) VALUES(?,?)");
   [1, 2, 3].forEach((sectionId) => ["SV001", "SV002", "SV003"].forEach((studentId) => enrollment.run(sectionId, studentId)));
 }
