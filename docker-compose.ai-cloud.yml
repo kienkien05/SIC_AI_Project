@@ -11,7 +11,7 @@ services:
     volumes:
       - ./models:/models:ro
       - ai_gallery:/data
-    ports: ["8503:8503"]
+    ports: ["127.0.0.1:8503:8503"]
 
 volumes:
   ai_gallery:
