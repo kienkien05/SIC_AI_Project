@@ -3,8 +3,9 @@ import { spawn } from "node:child_process";
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = new URL("..", import.meta.url).pathname.slice(1);
+const root = fileURLToPath(new URL("..", import.meta.url));
 const runtime = mkdtempSync(join(tmpdir(), "spas-system-smoke-"));
 const environment = {
   ...process.env,
