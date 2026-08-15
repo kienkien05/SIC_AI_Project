@@ -1,6 +1,7 @@
 import { spawn } from "node:child_process";
+import { fileURLToPath } from "node:url";
 
-const root = new URL("..", import.meta.url).pathname.slice(1);
+const root = fileURLToPath(new URL("..", import.meta.url));
 const environment = { ...process.env, INTERNAL_SERVICE_TOKEN: "local-test-internal-token-123456", SESSION_SECRET: "local-test-session-secret-1234567890" };
 const services = ["identity-service", "attendance-service", "api-gateway"].map((name) => spawn("node", ["dist/index.js"], { cwd: `${root}/services/${name}`, env: environment, stdio: "ignore" }));
 const wait = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
