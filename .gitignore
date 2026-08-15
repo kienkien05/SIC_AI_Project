@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Runtime state and biometric data
+management_app/spas.db
+ml_pipeline/demo_app/data/
+ml_pipeline/demo_app/models/
+ml_pipeline/demo_app/*.pid
+
+# Trained models and generated ML outputs
+*.pt
+*.pth
+*.onnx
+*.npy
+*.npz
+ml_pipeline/outputs/
+
+# Notebook and operating-system clutter
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Local experiments outside the tracked application
+/artifacts/
+/data/
+/AI-main/
+/.conda/
+/*.ipynb
+/a.py
+/capstone_ekyc_cccd.tex
+/main.tex
