@@ -4,6 +4,9 @@ __pycache__/
 .pytest_cache/
 .venv/
 *.egg-info/
+node_modules/
+dist/
+server-dist/
 
 # Local configuration and secrets
 .env
@@ -54,3 +57,6 @@ Thumbs.db
 /a.py
 /capstone_ekyc_cccd.tex
 /main.tex
+/web/
+/management_app/
+/services/*/runtime/

@@ -1,0 +1,17 @@
+services:
+  face-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile.ai
+    environment:
+      FACE_DEMO_DATA_DIR: /data
+      FACE_DETECTOR_PATH: /models/face_best.pt
+      FACE_RECOGNITION_PATH: /models/facenet_best.pt
+      FACE_AI_TOKEN: ${FACE_AI_TOKEN}
+    volumes:
+      - ./models:/models:ro
+      - ai_gallery:/data
+    ports: ["8503:8503"]
+
+volumes:
+  ai_gallery:

@@ -1,77 +1,63 @@
 # SPAS — Smart Passive Attendance System
 
-Repository này là bản **chạy đầy đủ hệ thống**: cổng học vụ, AI nhận diện khuôn mặt, model đã train và Docker Compose. Clone về là có thể khởi động demo; notebook training, data nghiên cứu và báo cáo không nằm trong repository triển khai.
+SPAS is a TypeScript microservice attendance system. The local stack provides the web portal, identity, attendance and AI adapter; the PyTorch face-AI service runs separately on the configured cloud endpoint.
 
-## Thành phần
+## Services
 
-| Service | Port | Vai trò |
+| Service | Port | Responsibility |
 | --- | ---: | --- |
-| `portal` | `8600` | Đăng nhập theo role, lớp học, thời khóa biểu, enrollment và điểm danh |
-| `ai` | `8503` | YOLO detection, MTCNN landmark alignment, FaceNet embedding/recognition |
+| `gateway` | `8600` | React web, signed session, RBAC, public API |
+| `identity-service` | internal | Users, roles and face-enrollment state |
+| `attendance-service` | internal | Classes, schedules and attendance records |
+| `ai-adapter-service` | internal | Validated/token-authenticated calls to cloud Face AI |
+| `face-ai` | cloud | YOLO, FaceNet and encrypted enrollment gallery |
 
-Model runtime được lưu bằng Git LFS:
+Only gateway is exposed to the browser. Internal services require `INTERNAL_SERVICE_TOKEN`; the browser never calls the cloud Face AI directly.
 
-- `models/face_best.pt`: YOLO face detector.
-- `models/facenet_best.pt`: FaceNet recognition 512-D đã fine-tune.
+## Quick start for members
 
-Database SQLite và dữ liệu enrollment/gallery chạy trong Docker volumes, không nằm trên GitHub.
+1. Install Docker Desktop and Git LFS.
+2. Clone the repository:
 
-## Yêu cầu
+   ```powershell
+   git lfs install
+   git clone https://github.com/kienkien05/SIC_AI_Project.git
+   cd SIC_AI_Project
+   Copy-Item .env.example .env
+   ```
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) đang chạy.
-- Git LFS. Cài lần đầu bằng `git lfs install`.
-- Webcam và trình duyệt hiện đại để enrollment/điểm danh realtime.
+3. Set these `.env` values supplied by the project owner:
 
-## Clone và chạy
+   ```text
+   INTERNAL_SERVICE_TOKEN=<long-random-shared-token>
+   SESSION_SECRET=<long-random-session-secret>
+   FACE_AI_URL=https://<cloud-face-ai-domain>
+   FACE_AI_TOKEN=<cloud-face-ai-token>
+   ```
 
-```powershell
-git lfs install
-git clone https://github.com/kienkien05/SIC_AI_Project.git
-cd SIC_AI_Project
-Copy-Item .env.example .env
-docker compose up --build
-```
+4. Start the local portal:
 
-Khi hai service có log `Application startup complete`, mở [http://127.0.0.1:8600](http://127.0.0.1:8600). Docker tự nối portal tới AI; không cần chạy hai terminal hay cấu hình đường dẫn model.
+   ```powershell
+   docker compose -f docker-compose.local.yml up --build
+   ```
 
-Nếu clone trước khi cài Git LFS, kéo model bằng:
+5. Open `http://127.0.0.1:8600`.
 
-```powershell
-git lfs pull
-```
+Demo accounts: `SV001/sv123`, `GV001/gv123`, `ADMIN001/admin123`.
 
-## Tài khoản demo
+## Security model
 
-- Quản trị: `ADMIN001` / `admin123`
-- Giáo viên: `GV001` / `gv123`
-- Sinh viên: `SV001` / `sv123`
+- User session is an `HttpOnly`, HMAC-signed cookie issued by gateway.
+- Student cannot write attendance; teacher can only query assigned sections; internal services reject direct calls without their token.
+- The AI cloud must set `FACE_AI_TOKEN`; it rejects requests without `x-spas-ai-token`.
+- Do not commit `.env`, SQLite volumes, face gallery or enrollment images.
 
-## Luồng sử dụng
-
-1. Đăng nhập sinh viên và mở **Tài khoản cá nhân** để đăng ký khuôn mặt.
-2. Làm theo hướng dẫn `thẳng → trái → phải → thẳng`; hệ thống tự chụp 8 frame đạt điều kiện.
-3. Đăng nhập giáo viên, mở lớp được phân công và bật **quét điểm danh realtime**.
-4. AI phát hiện mọi khuôn mặt trong frame, căn chỉnh landmark, so embedding với gallery và portal ghi nhận sinh viên thuộc lớp đó.
-5. Quản trị viên vào **Quản lý sinh viên** để xem trạng thái và reset enrollment khi cần.
-
-## Dữ liệu persistent
-
-| Dữ liệu | Nơi lưu | Xóa/reset |
-| --- | --- | --- |
-| Tài khoản, lớp và điểm danh | Docker volume `portal_data` | `docker compose down -v` |
-| Face gallery và enrollment crops | Docker volume `ai_data` | `docker compose down -v` |
-
-`docker compose down` chỉ dừng service và giữ dữ liệu. Dùng `docker compose down -v` chỉ khi muốn xóa toàn bộ dữ liệu demo.
-
-## Cấu hình an toàn
-
-Sửa `SPAS_SESSION_SECRET` trong `.env` trước khi đưa lên server thật. Không commit database, ảnh khuôn mặt, gallery hoặc file `.env`.
-
-## Kiểm tra mã nguồn
+## Checks
 
 ```powershell
-python management_app\self_check.py
-python ml_pipeline\demo_app\self_check.py
+pnpm install
+pnpm check
+pnpm test:rbac
 ```
 
-Các lệnh self-check dùng dữ liệu local; không chạy chúng trên môi trường thật.
+`test:rbac` proves an unauthenticated internal request is denied, a student attendance write gets `403`, and a teacher can access assigned sections.

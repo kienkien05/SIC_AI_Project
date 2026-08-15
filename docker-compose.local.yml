@@ -1,0 +1,53 @@
+services:
+  identity:
+    build:
+      context: .
+      dockerfile: Dockerfile.typescript
+    command: ["node", "services/identity-service/dist/index.js"]
+    environment:
+      PORT: 3001
+      IDENTITY_DB_PATH: /data/identity.db
+      INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN}
+    volumes: ["identity_data:/data"]
+
+  attendance:
+    build:
+      context: .
+      dockerfile: Dockerfile.typescript
+    command: ["node", "services/attendance-service/dist/index.js"]
+    environment:
+      PORT: 3002
+      ATTENDANCE_DB_PATH: /data/attendance.db
+      INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN}
+    volumes: ["attendance_data:/data"]
+
+  ai-adapter:
+    build:
+      context: .
+      dockerfile: Dockerfile.typescript
+    command: ["node", "services/ai-adapter-service/dist/index.js"]
+    environment:
+      PORT: 3003
+      INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN}
+      FACE_AI_URL: ${FACE_AI_URL}
+      FACE_AI_TOKEN: ${FACE_AI_TOKEN}
+
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.typescript
+    environment:
+      PORT: 8080
+      WEB_DIST_DIR: /app/apps/web/dist
+      IDENTITY_SERVICE_URL: http://identity:3001
+      ATTENDANCE_SERVICE_URL: http://attendance:3002
+      AI_ADAPTER_SERVICE_URL: http://ai-adapter:3003
+      INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN}
+      SESSION_SECRET: ${SESSION_SECRET}
+      NODE_ENV: production
+    depends_on: [identity, attendance, ai-adapter]
+    ports: ["8600:8080"]
+
+volumes:
+  identity_data:
+  attendance_data:
