@@ -21,13 +21,25 @@ function readSession(request: Request): Session | undefined {
   const packed = readCookie(request); if (!packed) return undefined;
   const [payload, received] = packed.split("."); if (!payload || !received) return undefined;
   const expected = signature(payload); if (expected.length !== received.length || !timingSafeEqual(Buffer.from(expected), Buffer.from(received))) return undefined;
-  try { return JSON.parse(Buffer.from(payload, "base64url").toString()) as Session; } catch { return undefined; }
+  try {
+    const value = JSON.parse(Buffer.from(payload, "base64url").toString()) as Partial<Session>;
+    return typeof value.id === "string" && typeof value.fullName === "string" && ["admin", "teacher", "student"].includes(value.role ?? "") ? value as Session : undefined;
+  } catch { return undefined; }
 }
 function setSession(response: ExpressResponse, user: User): void { const payload = Buffer.from(JSON.stringify({ id: user.id, role: user.role, fullName: user.fullName })).toString("base64url"); response.cookie("spas_session", `${payload}.${signature(payload)}`, { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", maxAge: 8 * 60 * 60 * 1000 }); }
 async function internal(url: string, init?: RequestInit): Promise<globalThis.Response> { return fetch(url, { ...init, headers: { "x-spas-internal-token": internalToken, "content-type": "application/json", ...(init?.headers ?? {}) } }); }
 async function internalUpload(path: string, fields: Record<string, string>, files: Express.Multer.File[]): Promise<globalThis.Response> { const data = new FormData(); Object.entries(fields).forEach(([key, value]) => data.append(key, value)); files.forEach((file) => data.append(file.fieldname, new Blob([file.buffer as unknown as BlobPart], { type: file.mimetype }), file.originalname)); return fetch(`${aiAdapterUrl}${path}`, { method: "POST", headers: { "x-spas-internal-token": internalToken }, body: data }); }
 function authenticated(request: Request, response: ExpressResponse, next: NextFunction): void { const user = readSession(request); if (!user) { response.status(401).json({ error: "Login required" }); return; } request.user = user; next(); }
 function allowed(...roles: Role[]) { return (request: Request, response: ExpressResponse, next: NextFunction): void => { if (!request.user || !roles.includes(request.user.role)) { response.status(403).json({ error: "Insufficient permission" }); return; } next(); }; }
+function validSectionId(value: unknown): number | undefined { const sectionId = Number(value); return Number.isSafeInteger(sectionId) && sectionId > 0 ? sectionId : undefined; }
+async function managesSection(user: Session, sectionId: number): Promise<boolean> {
+  if (user.role === "admin") return true;
+  if (user.role !== "teacher") return false;
+  const upstream = await internal(`${attendanceUrl}/internal/sections?teacherId=${user.id}`);
+  if (!upstream.ok) return false;
+  const data = await upstream.json() as { sections: Array<{ id: number }> };
+  return data.sections.some((section) => section.id === sectionId);
+}
 
 const app = express();
 app.use(express.json({ limit: "1mb" }));
@@ -46,11 +58,16 @@ app.get("/api/sections", authenticated, async (request, response) => {
   const upstream = await internal(`${attendanceUrl}/internal/sections${query}`); response.status(upstream.status).json(await upstream.json());
 });
 app.get("/api/sections/:id/students", authenticated, allowed("teacher", "admin"), async (request, response) => {
-  if (request.user!.role === "teacher") { const own = await internal(`${attendanceUrl}/internal/sections?teacherId=${request.user!.id}`); const data = await own.json() as { sections: Array<{ id: number }> }; if (!data.sections.some((section) => section.id === Number(request.params.id))) return response.status(403).json({ error: "Section is not assigned" }); }
-  const upstream = await internal(`${attendanceUrl}/internal/sections/${request.params.id}/students`); response.status(upstream.status).json(await upstream.json());
+  const sectionId = validSectionId(request.params.id);
+  if (!sectionId) return response.status(400).json({ error: "Invalid section" });
+  if (!(await managesSection(request.user!, sectionId))) return response.status(403).json({ error: "Section is not assigned" });
+  const upstream = await internal(`${attendanceUrl}/internal/sections/${sectionId}/students`); response.status(upstream.status).json(await upstream.json());
 });
 app.post("/api/attendance", authenticated, allowed("teacher", "admin"), async (request, response) => {
-  const upstream = await internal(`${attendanceUrl}/internal/attendance`, { method: "POST", body: JSON.stringify(request.body) });
+  const sectionId = validSectionId(request.body?.sectionId);
+  if (!sectionId) return response.status(400).json({ error: "Invalid section" });
+  if (!(await managesSection(request.user!, sectionId))) return response.status(403).json({ error: "Section is not assigned" });
+  const upstream = await internal(`${attendanceUrl}/internal/attendance`, { method: "POST", body: JSON.stringify({ ...request.body, sectionId }) });
   if (upstream.status === 204) return response.status(204).end(); response.status(upstream.status).json(await upstream.json());
 });
 app.get("/api/attendance/me", authenticated, allowed("student"), async (request, response) => {
@@ -70,12 +87,13 @@ app.post("/api/face/enrollment", authenticated, allowed("student"), upload.array
 });
 app.post("/api/sections/:id/recognize", authenticated, allowed("teacher"), upload.single("image"), async (request, response) => {
   if (!request.file) return response.status(400).json({ error: "Image is required" });
-  const own = await internal(`${attendanceUrl}/internal/sections?teacherId=${request.user!.id}`); const sectionData = await own.json() as { sections: Array<{ id: number }> };
-  if (!sectionData.sections.some((section) => section.id === Number(request.params.id))) return response.status(403).json({ error: "Section is not assigned" });
+  const sectionId = validSectionId(request.params.id);
+  if (!sectionId) return response.status(400).json({ error: "Invalid section" });
+  if (!(await managesSection(request.user!, sectionId))) return response.status(403).json({ error: "Section is not assigned" });
   const upstream = await internalUpload("/internal/recognize", {}, [request.file]); const data = await upstream.json() as { results?: Array<{ student_id?: string }> };
   if (!upstream.ok) return response.status(upstream.status).json(data);
   const markedIds: string[] = [];
-  for (const studentId of new Set(data.results?.map((result) => result.student_id).filter((id): id is string => Boolean(id)) ?? [])) { const marked = await internal(`${attendanceUrl}/internal/attendance`, { method: "POST", body: JSON.stringify({ sectionId: Number(request.params.id), studentId, status: "present" }) }); if (marked.ok) markedIds.push(studentId); }
+  for (const studentId of new Set(data.results?.map((result) => result.student_id).filter((id): id is string => Boolean(id)) ?? [])) { const marked = await internal(`${attendanceUrl}/internal/attendance`, { method: "POST", body: JSON.stringify({ sectionId, studentId, status: "present" }) }); if (marked.ok) markedIds.push(studentId); }
   response.json({ ...data, markedIds });
 });
 const webDist = process.env.WEB_DIST_DIR;
