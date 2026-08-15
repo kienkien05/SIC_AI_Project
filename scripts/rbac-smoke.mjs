@@ -25,7 +25,8 @@ try {
   const teacherLogin = await fetch("http://127.0.0.1:8080/api/auth/login", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ userId: "GV001", password: "gv123" }) });
   const teacherCookie = teacherLogin.headers.get("set-cookie");
   const sections = await fetch("http://127.0.0.1:8080/api/sections", { headers: { cookie: teacherCookie ?? "" } });
-  if (!sections.ok || !(await sections.text()).includes("INT101")) throw new Error("Teacher cannot access assigned sections");
+  const sectionData = await sections.json();
+  if (!sections.ok || !sectionData.sections?.some((section) => section.course_code === "INT101" && section.period === 1)) throw new Error("Teacher timetable is missing assigned period");
   const otherTeacherSection = await fetch("http://127.0.0.1:8080/api/attendance", { method: "POST", headers: { "content-type": "application/json", cookie: teacherCookie ?? "" }, body: JSON.stringify({ sectionId: 2, studentId: "SV001", status: "present" }) });
   if (otherTeacherSection.status !== 403) throw new Error(`Expected unassigned teacher section 403, got ${otherTeacherSection.status}`);
   const otherTeacherRoster = await fetch("http://127.0.0.1:8080/api/sections/2/students", { headers: { cookie: teacherCookie ?? "" } });
