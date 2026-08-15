@@ -196,6 +196,18 @@ async def detect_face_pose(image: UploadFile = File(), _authorized: None = Depen
     return {"pose": pose, "confidence": confidence, "detail": "" if pose != "unknown" else "Không đọc được điểm neo khuôn mặt."}
 
 
+@app.post("/api/check-enrollment")
+async def check_enrollment(student_id: str = Form(), frames: list[UploadFile] = File(), _authorized: None = Depends(require_ai_token)) -> dict:
+    student_id = safe_student_id(student_id)
+    if not student_id or len(frames) < 3:
+        raise HTTPException(400, "Cần mã và ít nhất 3 frame camera.")
+    faces = enrollment_faces([decode(await frame.read()) for frame in frames])
+    if len(faces) < MODEL_SEED["minimum_enrollment_faces"]:
+        raise HTTPException(400, "Chưa có đủ frame tốt: cần đúng một khuôn mặt rõ, kích thước đủ lớn.")
+    matched_id, matched_name, score = gallery_match([embed(face) for face in faces], ignored_id=student_id)
+    return {"duplicate": bool(matched_id and score >= MODEL_SEED["recognition_threshold"]), "student_id": matched_id, "name": matched_name, "score": score}
+
+
 @app.post("/api/enroll")
 async def enroll(student_id: str = Form(), name: str = Form(), frames: list[UploadFile] = File(), _authorized: None = Depends(require_ai_token)) -> dict:
     student_id = safe_student_id(student_id)
@@ -248,7 +260,8 @@ async def recognize(image: UploadFile = File(), _authorized: None = Depends(requ
     student_ids, names, gallery_vectors = load_gallery()
     annotated, results = frame.copy(), []
     for box in face_boxes(frame):
-        vector = embed(crop(frame, box))
+        face = crop(frame, box)
+        vector = embed(face)
         student_id = name = "Unknown"
         score = 0.0
         if student_ids:
@@ -260,5 +273,5 @@ async def recognize(image: UploadFile = File(), _authorized: None = Depends(requ
         color = (0, 180, 0) if student_id != "Unknown" else (0, 80, 255)
         cv2.rectangle(annotated, (x1, y1), (x2, y2), color, 2)
         cv2.putText(annotated, f"{name} {score:.2f}", (x1, max(24, y1 - 8)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
-        results.append({"student_id": "" if student_id == "Unknown" else student_id, "name": name, "score": score})
+        results.append({"student_id": "" if student_id == "Unknown" else student_id, "name": name, "score": score, "crop": base64_jpeg(face) if student_id != "Unknown" else ""})
     return {"faces": len(results), "results": results, "image": base64_jpeg(annotated)}

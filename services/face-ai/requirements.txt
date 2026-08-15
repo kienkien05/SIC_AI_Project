@@ -4,7 +4,5 @@ python-multipart==0.0.20
 huggingface_hub==0.27.1
 ultralytics==8.3.160
 facenet-pytorch==2.6.0
-torch==2.2.2
-torchvision==0.17.2
 numpy>=1.26,<2
 opencv-python-headless==4.10.0.84
