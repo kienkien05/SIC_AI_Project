@@ -17,7 +17,6 @@ Set `.env` values:
 ```text
 INTERNAL_SERVICE_TOKEN=<long-random-token>
 SESSION_SECRET=<long-random-secret>
-FACE_AI_URL=<face-ai-endpoint>
 FACE_AI_TOKEN=<face-ai-token>
 ```
 
@@ -26,6 +25,8 @@ Start project:
 ```powershell
 docker compose -f docker-compose.local.yml up --build
 ```
+
+Lần khởi động đầu tiên, service AI tự tải checkpoint từ model repository trong `services/face-ai/seed.json`; các lần sau dùng cache Docker volume.
 
 Open `http://127.0.0.1:8600`.
 

@@ -1,0 +1,10 @@
+{
+  "model_repo": "kien0512/SIC-face-models",
+  "detector_file": "face_best.pt",
+  "recognizer_file": "facenet_best.pt",
+  "detector_image_size": 640,
+  "detector_confidence": 0.35,
+  "recognition_threshold": 0.6,
+  "minimum_enrollment_faces": 5,
+  "required_enrollment_poses": ["front", "left", "right"]
+}
