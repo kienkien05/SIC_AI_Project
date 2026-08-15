@@ -1,2 +1,0 @@
-models/face_best.pt filter=lfs diff=lfs merge=lfs -text
-models/facenet_best.pt filter=lfs diff=lfs merge=lfs -text

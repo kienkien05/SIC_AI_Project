@@ -38,7 +38,7 @@ services:
       dockerfile: Dockerfile.typescript
     environment:
       PORT: 8080
-      WEB_DIST_DIR: /app/apps/web/dist
+      WEB_DIST_DIR: /app/frontend/dist
       IDENTITY_SERVICE_URL: http://identity:3001
       ATTENDANCE_SERVICE_URL: http://attendance:3002
       AI_ADAPTER_SERVICE_URL: http://ai-adapter:3003
