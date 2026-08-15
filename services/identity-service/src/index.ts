@@ -5,6 +5,7 @@ import { DatabaseSync } from "node:sqlite";
 import express from "express";
 import type { Role, User } from "@spas/contracts";
 import { requireInternal } from "@spas/service-security";
+import { seedUsers } from "./seed.js";
 
 type StoredUser = { id: string; full_name: string; role: Role; password_hash: string; enrolled_at?: string };
 const databasePath = process.env.IDENTITY_DB_PATH ?? "./runtime/identity.db";
@@ -30,7 +31,7 @@ function publicUser(row: StoredUser): User & { enrolledAt?: string } {
 const count = database.prepare("SELECT COUNT(*) AS total FROM users").get() as { total: number };
 if (!count.total) {
   const insert = database.prepare("INSERT INTO users(id, full_name, role, password_hash) VALUES(?,?,?,?)");
-  [["ADMIN001", "Quản trị SPAS", "admin", "admin123"], ["GV001", "Nguyễn Minh An", "teacher", "gv123"], ["GV002", "Trần Thu Hà", "teacher", "gv123"], ["SV001", "Trương Trung Kiên", "student", "sv123"], ["SV002", "Lê Minh Quang", "student", "sv123"], ["SV003", "Nguyễn Lan Anh", "student", "sv123"]].forEach(([id, name, role, password]) => insert.run(id, name, role, hashPassword(password)));
+  seedUsers.forEach((user) => insert.run(user.id, user.fullName, user.role, hashPassword(user.password)));
 }
 
 const app = express();
