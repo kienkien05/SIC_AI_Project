@@ -66,4 +66,13 @@ app.delete("/internal/users/:id/enrollment", (request, response) => {
   database.prepare("UPDATE users SET enrolled_at=NULL WHERE id=? AND role='student'").run(request.params.id);
   response.status(204).end();
 });
+app.post("/internal/users/:id/password", (request, response) => {
+  const { currentPassword, newPassword } = request.body as { currentPassword?: string; newPassword?: string };
+  if (!currentPassword || !newPassword || newPassword.length < 6) return response.status(400).json({ error: "New password must contain at least 6 characters" });
+  const row = database.prepare("SELECT password_hash FROM users WHERE id=?").get(request.params.id) as { password_hash: string } | undefined;
+  if (!row) return response.status(404).json({ error: "User not found" });
+  if (!matchesPassword(currentPassword, row.password_hash)) return response.status(400).json({ error: "Current password is incorrect" });
+  database.prepare("UPDATE users SET password_hash=? WHERE id=?").run(hashPassword(newPassword), request.params.id);
+  response.status(204).end();
+});
 app.listen(Number(process.env.PORT ?? 3001));

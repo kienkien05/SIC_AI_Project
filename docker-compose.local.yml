@@ -1,49 +1,52 @@
 services:
   face-ai:
     build: ./services/face-ai
+    profiles: ["local-ai"]
     environment:
+      PORT: 8000
       FACE_AI_TOKEN: ${FACE_AI_TOKEN}
       FACE_AI_DATA_DIR: /data
     volumes: [face_ai_data:/data]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 45s
 
   identity:
-    build:
-      context: .
-      dockerfile: Dockerfile.typescript
+    build: { context: ., dockerfile: Dockerfile.typescript }
     command: ["node", "services/identity-service/dist/index.js"]
     environment:
       PORT: 3001
       IDENTITY_DB_PATH: /data/identity.db
       INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN}
-    volumes: ["identity_data:/data"]
+    volumes: [identity_data:/data]
+    restart: unless-stopped
 
   attendance:
-    build:
-      context: .
-      dockerfile: Dockerfile.typescript
+    build: { context: ., dockerfile: Dockerfile.typescript }
     command: ["node", "services/attendance-service/dist/index.js"]
     environment:
       PORT: 3002
       ATTENDANCE_DB_PATH: /data/attendance.db
       INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN}
-    volumes: ["attendance_data:/data"]
+    volumes: [attendance_data:/data]
+    restart: unless-stopped
 
   ai-adapter:
-    build:
-      context: .
-      dockerfile: Dockerfile.typescript
+    build: { context: ., dockerfile: Dockerfile.typescript }
     command: ["node", "services/ai-adapter-service/dist/index.js"]
     environment:
       PORT: 3003
-      INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN}
-      FACE_AI_URL: http://face-ai:8000
+      FACE_AI_URL: ${FACE_AI_URL:-http://face-ai:8000}
       FACE_AI_TOKEN: ${FACE_AI_TOKEN}
-    depends_on: [face-ai]
+      INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN}
+    restart: unless-stopped
 
   gateway:
-    build:
-      context: .
-      dockerfile: Dockerfile.typescript
+    build: { context: ., dockerfile: Dockerfile.typescript }
     environment:
       PORT: 8080
       WEB_DIST_DIR: /app/frontend/dist
@@ -52,11 +55,12 @@ services:
       AI_ADAPTER_SERVICE_URL: http://ai-adapter:3003
       INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN}
       SESSION_SECRET: ${SESSION_SECRET}
-      NODE_ENV: production
+      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-false}
     depends_on: [identity, attendance, ai-adapter]
     ports: ["8600:8080"]
+    restart: unless-stopped
 
 volumes:
+  face_ai_data:
   identity_data:
   attendance_data:
-  face_ai_data:
