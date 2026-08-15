@@ -1,10 +1,15 @@
 .git/
+node_modules/
+**/node_modules/
+dist/
+**/dist/
 .venv/
 __pycache__/
 .pytest_cache/
 .env
 models/
 runtime/
+services/*/runtime/
 data/
 artifacts/
 AI-main/
