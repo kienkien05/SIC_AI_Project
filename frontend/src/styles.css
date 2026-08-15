@@ -128,6 +128,11 @@ td small { color: var(--muted); }
 .three-forms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .compact-form { padding: 18px; }
 .compact-form h2 { margin-bottom: 4px; }
+.schedule-picker { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: 8px; }
+.schedule-slots { display: flex; flex-wrap: wrap; gap: 6px; min-height: 27px; color: var(--muted); }
+.schedule-slot { display: inline-flex; align-items: center; gap: 6px; padding: 4px 7px; color: #374151; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 3px; font-size: 12px; }
+.schedule-slot button { min-height: 20px; padding: 0 4px; color: #6b7280; background: transparent; border: 0; font-size: 16px; line-height: 1; }
+.schedule-slot button:hover:not(:disabled) { color: var(--red); background: transparent; border: 0; }
 .small-button { min-height: 31px; padding: 5px 9px; }
 .student-detail .actions { padding: 0; }
 .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding: 18px; }
