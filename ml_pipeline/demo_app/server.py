@@ -11,7 +11,7 @@ import cv2
 import numpy as np
 import torch
 from facenet_pytorch import InceptionResnetV1, MTCNN, fixed_image_standardization
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, UploadFile
 from fastapi.responses import HTMLResponse
 from PIL import Image
 from torchvision import transforms
@@ -29,6 +29,12 @@ FACE_TEMPLATE = np.float32(
     [[54.7, 73.9], [105.0, 73.6], [80.0, 102.5], [59.4, 132.0], [101.0, 131.7]]
 )
 app = FastAPI(title="Face Attendance Demo")
+AI_TOKEN = os.getenv("FACE_AI_TOKEN")
+
+
+def require_ai_token(x_spas_ai_token: str | None = Header(default=None)) -> None:
+    if AI_TOKEN and x_spas_ai_token != AI_TOKEN:
+        raise HTTPException(401, "Unauthorized AI request.")
 
 
 def find_model(env_name: str, filename: str) -> Path:
@@ -255,7 +261,7 @@ def gallery() -> dict:
 
 
 @app.post("/api/face-pose")
-async def detect_face_pose(image: UploadFile = File()) -> dict:
+async def detect_face_pose(image: UploadFile = File(), _authorized: None = Depends(require_ai_token)) -> dict:
     frame = decode(await image.read())
     boxes = face_boxes(frame)
     if len(boxes) != 1:
@@ -268,7 +274,7 @@ async def detect_face_pose(image: UploadFile = File()) -> dict:
 
 
 @app.post("/api/enroll")
-async def enroll(student_id: str = Form(), name: str = Form(), frames: list[UploadFile] = File()) -> dict:
+async def enroll(student_id: str = Form(), name: str = Form(), frames: list[UploadFile] = File(), _authorized: None = Depends(require_ai_token)) -> dict:
     student_id = safe_student_id(student_id)
     if not student_id or not name.strip() or len(frames) < 3:
         raise HTTPException(400, "Cần mã, tên và ít nhất 3 frame camera.")
@@ -295,7 +301,7 @@ async def enroll(student_id: str = Form(), name: str = Form(), frames: list[Uplo
 
 
 @app.post("/api/check-enrollment")
-async def check_enrollment(student_id: str = Form(), frames: list[UploadFile] = File()) -> dict:
+async def check_enrollment(student_id: str = Form(), frames: list[UploadFile] = File(), _authorized: None = Depends(require_ai_token)) -> dict:
     student_id = safe_student_id(student_id)
     if not student_id or len(frames) < 3:
         raise HTTPException(400, "Cần mã và ít nhất 3 frame camera.")
@@ -307,7 +313,7 @@ async def check_enrollment(student_id: str = Form(), frames: list[UploadFile] = 
 
 
 @app.delete("/api/enrollment/{student_id}")
-def reset_enrollment(student_id: str) -> dict:
+def reset_enrollment(student_id: str, _authorized: None = Depends(require_ai_token)) -> dict:
     student_id = safe_student_id(student_id)
     if not student_id:
         raise HTTPException(400, "Mã không hợp lệ.")
@@ -317,7 +323,7 @@ def reset_enrollment(student_id: str) -> dict:
 
 
 @app.get("/api/enrollment/{student_id}/previews")
-def enrollment_previews(student_id: str) -> dict:
+def enrollment_previews(student_id: str, _authorized: None = Depends(require_ai_token)) -> dict:
     student_id = safe_student_id(student_id)
     if not student_id:
         raise HTTPException(400, "Mã không hợp lệ.")
@@ -330,7 +336,7 @@ def enrollment_previews(student_id: str) -> dict:
 
 
 @app.post("/api/recognize")
-async def recognize(image: UploadFile = File()) -> dict:
+async def recognize(image: UploadFile = File(), _authorized: None = Depends(require_ai_token)) -> dict:
     frame = decode(await image.read())
     student_ids, names, gallery_vectors = load_gallery()
     annotated, results = frame.copy(), []
