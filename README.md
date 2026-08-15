@@ -48,7 +48,7 @@ Demo accounts: `SV001/sv123`, `GV001/gv123`, `ADMIN001/admin123`.
 ## Security model
 
 - User session is an `HttpOnly`, HMAC-signed cookie issued by gateway.
-- Student cannot write attendance; teacher can only query assigned sections; internal services reject direct calls without their token.
+- Student cannot write attendance or view rosters; teacher can only view, scan, or write attendance for assigned sections; internal services reject direct calls without their token.
 - The AI cloud must set `FACE_AI_TOKEN`; it rejects requests without `x-spas-ai-token`.
 - Do not commit `.env`, SQLite volumes, face gallery or enrollment images.
 
@@ -60,4 +60,4 @@ pnpm check
 pnpm test:rbac
 ```
 
-`test:rbac` proves an unauthenticated internal request is denied, a student attendance write gets `403`, and a teacher can access assigned sections.
+`test:rbac` proves direct internal calls, anonymous requests and tampered sessions are denied; students get `403` for attendance/rosters; teachers get `403` outside assigned sections; and admins can write any seeded section.

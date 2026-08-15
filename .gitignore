@@ -41,6 +41,8 @@ Thumbs.db
 /artifacts/
 /data/
 /runtime/
+/.codebase-memory/
+/.codegraph/
 /AI-main/
 /.conda/
 /docs/
