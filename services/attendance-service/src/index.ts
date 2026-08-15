@@ -117,7 +117,7 @@ app.post("/internal/attendance", (request, response) => {
 });
 app.get("/internal/attendance", (request, response) => {
   const studentId = String(request.query.studentId ?? "");
-  const rows = db.prepare("SELECT a.date,a.status,a.first_seen_at AS firstSeenAt,a.proof_image AS faceImage,s.course_code,c.title FROM attendance a JOIN sections s ON s.id=a.section_id JOIN courses c ON c.code=s.course_code WHERE a.student_id=? ORDER BY a.date DESC").all(studentId);
+  const rows = db.prepare("SELECT a.date,a.status,a.first_seen_at AS firstSeenAt,a.proof_image AS faceImage,s.course_code,c.title,s.room,s.period,s.start_time AS startTime,s.end_time AS endTime FROM attendance a JOIN sections s ON s.id=a.section_id JOIN courses c ON c.code=s.course_code WHERE a.student_id=? ORDER BY a.date DESC,s.start_time DESC").all(studentId);
   response.json({ attendance: rows });
 });
 app.listen(Number(process.env.PORT ?? 3002));
