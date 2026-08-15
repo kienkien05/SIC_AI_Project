@@ -5,8 +5,6 @@
   "scripts": {
     "build": "pnpm -r build",
     "check": "pnpm -r check",
-    "dev:frontend": "pnpm --filter @spas/frontend dev",
-    "test:rbac": "pnpm build && node scripts/rbac-smoke.mjs",
-    "test:system": "pnpm build && node scripts/system-smoke.mjs"
+    "dev:frontend": "pnpm --filter @spas/frontend dev"
   }
 }

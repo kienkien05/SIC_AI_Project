@@ -35,10 +35,6 @@ Demo accounts: `SV001/sv123`, `GV001/gv123`, `ADMIN001/admin123`.
 
 ```powershell
 docker compose -f docker-compose.local.yml down
-pnpm install
-pnpm check
-pnpm test:rbac
-pnpm test:system
 ```
 
 ## Structure
@@ -47,5 +43,4 @@ pnpm test:system
 frontend/   React portal
 services/   gateway, identity, attendance, AI adapter
 packages/   shared contracts and service security
-scripts/    RBAC and system smoke tests
 ```
