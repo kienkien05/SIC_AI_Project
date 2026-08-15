@@ -67,6 +67,9 @@ Demo accounts: `SV001/sv123`, `GV001/gv123`, `ADMIN001/admin123`.
 pnpm install
 pnpm check
 pnpm test:rbac
+pnpm test:system
 ```
 
 `test:rbac` proves direct internal calls, anonymous requests and tampered sessions are denied; students get `403` for attendance/rosters; teachers get `403` outside assigned sections; and admins can write any seeded section.
+
+`test:system` starts every TypeScript service with a token-protected Face AI stub, then verifies student pose/enrollment and teacher classroom recognition end to end. It does not replace testing the real trained models on the cloud service.
