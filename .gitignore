@@ -24,6 +24,11 @@ ml_pipeline/demo_app/*.pid
 *.npz
 ml_pipeline/outputs/
 
+# The two runtime checkpoints are intentionally versioned with Git LFS.
+!/models/
+!/models/face_best.pt
+!/models/facenet_best.pt
+
 # Notebook and operating-system clutter
 .ipynb_checkpoints/
 .DS_Store
@@ -32,8 +37,19 @@ Thumbs.db
 # Local experiments outside the tracked application
 /artifacts/
 /data/
+/runtime/
 /AI-main/
 /.conda/
+/docs/
+/ml_pipeline/README.md
+/ml_pipeline/pyproject.toml
+/ml_pipeline/kaggle_detector_kernel/
+/ml_pipeline/kaggle_kernel/
+/ml_pipeline/kaggle_recognition_kernel/
+/ml_pipeline/remote_kernel/
+/ml_pipeline/scripts/
+/ml_pipeline/src/
+/ml_pipeline/tests/
 /*.ipynb
 /a.py
 /capstone_ekyc_cccd.tex

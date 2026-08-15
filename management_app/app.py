@@ -23,6 +23,7 @@ from starlette.middleware.sessions import SessionMiddleware
 APP_DIR = Path(__file__).resolve().parent
 DATABASE_PATH = Path(os.getenv("SPAS_DATABASE_PATH", APP_DIR / "spas.db"))
 SESSION_SECRET = os.getenv("SPAS_SESSION_SECRET", "local-demo-change-before-deploy")
+AI_SERVICE_URL = os.getenv("SPAS_AI_SERVICE_URL", "http://127.0.0.1:8503").rstrip("/")
 app = FastAPI(title="SPAS - Smart Passive Attendance System")
 app.add_middleware(SessionMiddleware, secret_key=SESSION_SECRET, same_site="lax", https_only=False)
 
@@ -55,6 +56,11 @@ def password_matches(password: str, stored: str) -> bool:
     return hmac.compare_digest(password_hash(password, raw[:16]), stored)
 
 
+@app.get("/health")
+def health() -> dict[str, str]:
+    return {"status": "ok"}
+
+
 def valid_id(value: str) -> bool:
     return bool(re.fullmatch(r"[A-Za-z0-9_-]{3,30}", value))
 
@@ -70,7 +76,7 @@ def ai_post(path: str, fields: list[tuple[str, str]], files: list[tuple[str, str
     parts.extend([f"--{boundary}--".encode(), b""])
     body = b"\r\n".join(parts)
     request = UrlRequest(
-        f"http://127.0.0.1:8503{path}",
+        f"{AI_SERVICE_URL}{path}",
         data=body,
         headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
         method="POST",
@@ -96,13 +102,13 @@ def face_pose_with_ai(image: bytes, filename: str) -> dict:
 
 
 def reset_enrollment_with_ai(student_id: str) -> None:
-    request = UrlRequest(f"http://127.0.0.1:8503/api/enrollment/{quote(student_id)}", method="DELETE")
+    request = UrlRequest(f"{AI_SERVICE_URL}/api/enrollment/{quote(student_id)}", method="DELETE")
     with urlopen(request, timeout=30):
         pass
 
 
 def enrollment_previews_with_ai(student_id: str) -> list[str]:
-    request = UrlRequest(f"http://127.0.0.1:8503/api/enrollment/{quote(student_id)}/previews")
+    request = UrlRequest(f"{AI_SERVICE_URL}/api/enrollment/{quote(student_id)}/previews")
     with urlopen(request, timeout=30) as response:
         return json.loads(response.read())["previews"]
 
