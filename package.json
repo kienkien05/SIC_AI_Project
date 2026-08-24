@@ -1,10 +1,11 @@
 {
   "name": "spas-platform",
   "private": true,
-  "packageManager": "pnpm@11.9.0",
+  "packageManager": "pnpm@11.23.0",
   "scripts": {
     "build": "pnpm -r build",
     "check": "pnpm -r check",
+    "dev:backend": "node dev-backend.mjs",
     "dev:frontend": "pnpm --filter @spas/frontend dev"
   }
 }

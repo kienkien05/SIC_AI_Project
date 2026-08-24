@@ -11,3 +11,9 @@ services/*/runtime/
 .codegraph/
 .DS_Store
 Thumbs.db
+.backend.pid
+start-backend.ps1
+stop-backend.ps1
+dev-backend.mjs
+
+
