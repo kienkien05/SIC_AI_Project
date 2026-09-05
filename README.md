@@ -12,7 +12,6 @@ SIC-Smart-Attendance/
 ├── data/import-samples/      # File Excel mẫu để import và demo QA
 ├── models/                   # Model local, xem models/README.md để tải weights
 ├── runtime/                  # Evidence/gallery local, bị gitignore
-├── docs/                     # Tài liệu được chia theo Epic/BA/API/AI/QA
 ├── docker-compose.yml        # Postgres + Backend + AI + Frontend
 └── README.md
 ```
@@ -63,10 +62,6 @@ Seed database:
 ```bash
 pnpm --dir backend seed
 ```
-
-## Tài liệu
-
-Xem [docs/README.md](./docs/README.md) để biết tài liệu nào là nguồn ưu tiên cho BA, API, AI và QA.
 
 ## Dừng hệ thống
 
