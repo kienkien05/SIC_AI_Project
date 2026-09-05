@@ -10,7 +10,7 @@ SIC-Smart-Attendance/
 ├── backend/                  # Express + TypeScript + Prisma: API, RBAC, nghiệp vụ
 ├── ai-service/               # FastAPI: YOLO face detection, FaceNet embedding, recognition
 ├── data/import-samples/      # File Excel mẫu để import và demo QA
-├── models/                   # Model local, bị gitignore; không commit weights
+├── models/                   # Model local, xem models/README.md để tải weights
 ├── runtime/                  # Evidence/gallery local, bị gitignore
 ├── docs/                     # Tài liệu được chia theo Epic/BA/API/AI/QA
 ├── docker-compose.yml        # Postgres + Backend + AI + Frontend
@@ -29,14 +29,14 @@ Các module bám theo backlog BA:
 Cần Docker Desktop và Docker Compose v2.
 
 ```bash
-git clone https://github.com/NguyenVanTruong123/SIC-Smart-Attendance.git
-cd SIC-Smart-Attendance
+git clone https://github.com/kienkien05/SIC_AI_Project.git
+cd SIC_AI_Project
 docker compose up --build
 ```
 
 Mở `http://127.0.0.1:8600`.
 
-Đặt `face_best.pt` và `facenet_best.pt` vào `models/` trước khi chạy AI. Model không được commit lên Git; có thể tải từ kho model nội bộ của team.
+Đặt `face_best.pt` và `facenet_best.pt` vào `models/` trước khi chạy AI. Model không commit lên Git; xem `models/README.md` để tải từ Hugging Face.
 
 ## Chạy từng module
 

@@ -30,8 +30,8 @@ C:\Users\dangv\Desktop\SIC\SIC-Smart-Attendance
 Kiểm tra model:
 
 ```text
-ai-service/models/face_best.pt
-ai-service/models/facenet_best.pt
+models/face_best.pt
+models/facenet_best.pt
 ```
 
 Khởi động hệ thống:
@@ -290,8 +290,8 @@ docker compose logs --tail=100 backend
 | File | Trách nhiệm |
 |---|---|
 | `ai-service/main.py` | Load YOLO/ArcFace, detect pose, crop, align, embedding, cosine và trả response AI |
-| `ai-service/models/face_best.pt` | Checkpoint YOLO face detector |
-| `ai-service/models/facenet_best.pt` | Checkpoint InceptionResnetV1 512D |
+| `models/face_best.pt` | Checkpoint YOLO face detector |
+| `models/facenet_best.pt` | Checkpoint InceptionResnetV1 512D |
 | `ai-service/data/gallery.npz` | Gallery embedding dùng cho enrollment/roster runtime |
 | `ai-service/data/enrollment_crops/` | Ảnh crop enrollment của AI service |
 

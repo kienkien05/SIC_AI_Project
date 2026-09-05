@@ -666,7 +666,7 @@ for path in real_paths:
 
 ## 4. Đóng gói model cho AI service
 
-AI service hiện tại đọc model từ `ai-service/models` hoặc đường dẫn trong biến môi trường:
+AI service hiện tại đọc model từ `models/` ở thư mục gốc hoặc đường dẫn trong biến môi trường:
 
 ```text
 FACE_DETECTOR_PATH       → face_best.pt

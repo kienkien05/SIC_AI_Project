@@ -23,4 +23,4 @@ docs/
 3. AI demo: [AI MVP flow](./03-ai/AI_MVP_DEMO_FLOW.md)
 4. Thay đổi code: [Change log](./05-changelog/changes.md)
 
-`04-qa/archive/backend_missing_features.md` là báo cáo lịch sử, chỉ dùng để tham khảo. Khi tài liệu mâu thuẫn với code hoặc BA hiện tại, ưu tiên code đã kiểm tra và hai tài liệu nguồn ở trên.
+Các tài liệu trong thư mục này phục vụ review và demo; khi có mâu thuẫn, ưu tiên code đã kiểm tra và BA/API hiện tại.

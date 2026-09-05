@@ -305,7 +305,7 @@ Chỉ đánh dấu “BA Final complete” khi đồng thời thỏa các điề
 
 Bản hiện tại **không thiếu nền tảng**, nhưng đang ở mức **core demo / pre-pilot**, chưa phải BA Final hoàn chỉnh. Phần cần ưu tiên không phải thêm UI mới trước, mà là chốt contract và làm chắc 4 trục: **roster-scoped recognition, session state machine, evidence ownership, RBAC/error contract**. Sau đó mới bổ sung anti-spoof chuyên dụng, re-eKYC có phê duyệt, teacher exclusion, export và production infrastructure.
 
-Các tài liệu cũ như `docs/04-qa/archive/backend_missing_features.md` và các report lịch sử không nên dùng làm source of truth nếu mâu thuẫn với code hiện tại hoặc BA Final. File này là baseline đối chiếu cho QA và review tiếp theo; mỗi thay đổi sau này nên cập nhật thêm bảng API/status và acceptance evidence tương ứng.
+Các report lịch sử không nên dùng làm source of truth nếu mâu thuẫn với code hiện tại hoặc BA Final. File này là baseline đối chiếu cho QA và review tiếp theo; mỗi thay đổi sau này nên cập nhật thêm bảng API/status và acceptance evidence tương ứng.
 
 ## 12. Những điểm đã thay thế so với BA
 
