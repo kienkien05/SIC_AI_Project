@@ -1,0 +1,55 @@
+{
+  "docx_pages": null,
+  "pdf_pages": 45,
+  "inline_images": 2,
+  "figure_captions": [
+    {
+      "text": "Hình 1.1. Sơ đồ tổ chức FPT Smart Cloud năm 2026\t3",
+      "italic": false,
+      "centered": false
+    },
+    {
+      "text": "Hình 1.2. Cơ cấu tổ chức Khối Sản phẩm AI năm 2026\t3",
+      "italic": false,
+      "centered": false
+    },
+    {
+      "text": "Hình 1.1. Sơ đồ tổ chức FPT Smart Cloud năm 2026 [11]",
+      "italic": true,
+      "centered": true
+    },
+    {
+      "text": "Hình 1.2. Cơ cấu tổ chức Khối Sản phẩm AI năm 2026 [11]",
+      "italic": true,
+      "centered": true
+    }
+  ],
+  "reference_11": true,
+  "old_defensive_phrases": {
+    "Mẫu báo cáo yêu cầu": false,
+    "không nêu tên cá nhân hoặc chi tiết cơ cấu chưa được cho phép": false,
+    "Tài liệu hội nhập không phải báo cáo tài chính": false
+  },
+  "md_image_links": 2,
+  "md_chart_files_exist": [
+    true,
+    true
+  ],
+  "chart_pages": [
+    {
+      "page": 10,
+      "captions": [
+        "Hình 1.1. Sơ đồ tổ chức FPT Smart Cloud năm 2026",
+        "Hình 1.2. Cơ cấu tổ chức Khối Sản phẩm AI năm 2026"
+      ]
+    },
+    {
+      "page": 14,
+      "captions": [
+        "Hình 1.1. Sơ đồ tổ chức FPT Smart Cloud năm 2026 [11]",
+        "Hình 1.2. Cơ cấu tổ chức Khối Sản phẩm AI năm 2026 [11]"
+      ]
+    }
+  ],
+  "toc_chart_rows": 2
+}

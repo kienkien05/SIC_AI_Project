@@ -1,0 +1,742 @@
+{
+  "breaks": [
+    {
+      "i": 12,
+      "text": ""
+    },
+    {
+      "i": 25,
+      "text": ""
+    },
+    {
+      "i": 31,
+      "text": ""
+    },
+    {
+      "i": 81,
+      "text": ""
+    },
+    {
+      "i": 92,
+      "text": ""
+    },
+    {
+      "i": 94,
+      "text": ""
+    },
+    {
+      "i": 124,
+      "text": ""
+    },
+    {
+      "i": 128,
+      "text": ""
+    },
+    {
+      "i": 192,
+      "text": ""
+    },
+    {
+      "i": 232,
+      "text": ""
+    },
+    {
+      "i": 265,
+      "text": ""
+    },
+    {
+      "i": 290,
+      "text": ""
+    },
+    {
+      "i": 312,
+      "text": ""
+    },
+    {
+      "i": 317,
+      "text": ""
+    }
+  ],
+  "partsAndChapters": [
+    {
+      "bodyIndex": 33,
+      "text": "PHẦN I. KHÁI QUÁT VỀ ĐƠN VỊ THỰC TẬP\t1",
+      "pStyle": "toc 1"
+    },
+    {
+      "bodyIndex": 39,
+      "text": "PHẦN II. GÁN NHÃN DỮ LIỆU VÀ TINH CHỈNH MÔ HÌNH YOLO\t5",
+      "pStyle": "toc 1"
+    },
+    {
+      "bodyIndex": 41,
+      "text": "CHƯƠNG 1. CƠ SỞ LÝ THUYẾT\t6",
+      "pStyle": "toc 2"
+    },
+    {
+      "bodyIndex": 53,
+      "text": "CHƯƠNG 2. PHÂN TÍCH VÀ THIẾT KẾ QUY TRÌNH\t14",
+      "pStyle": "toc 2"
+    },
+    {
+      "bodyIndex": 63,
+      "text": "CHƯƠNG 3. THỰC HIỆN GÁN NHÃN VÀ TINH CHỈNH MÔ HÌNH\t21",
+      "pStyle": "toc 2"
+    },
+    {
+      "bodyIndex": 69,
+      "text": "CHƯƠNG 4. KẾT QUẢ, KIỂM THỬ VÀ ĐÁNH GIÁ\t26",
+      "pStyle": "toc 2"
+    },
+    {
+      "bodyIndex": 75,
+      "text": "PHẦN III. NHẬN XÉT VÀ ĐỀ XUẤT\t29",
+      "pStyle": "toc 1"
+    },
+    {
+      "bodyIndex": 104,
+      "text": "PHẦN I. KHÁI QUÁT VỀ ĐƠN VỊ THỰC TẬP",
+      "pStyle": "Heading 1"
+    },
+    {
+      "bodyIndex": 132,
+      "text": "PHẦN II. GÁN NHÃN DỮ LIỆU VÀ TINH CHỈNH MÔ HÌNH YOLO",
+      "pStyle": "Heading 1"
+    },
+    {
+      "bodyIndex": 136,
+      "text": "CHƯƠNG 1. CƠ SỞ LÝ THUYẾT",
+      "pStyle": "Heading 2"
+    },
+    {
+      "bodyIndex": 206,
+      "text": "CHƯƠNG 2. PHÂN TÍCH VÀ THIẾT KẾ QUY TRÌNH",
+      "pStyle": "Heading 2"
+    },
+    {
+      "bodyIndex": 253,
+      "text": "CHƯƠNG 3. THỰC HIỆN GÁN NHÃN VÀ TINH CHỈNH MÔ HÌNH",
+      "pStyle": "Heading 2"
+    },
+    {
+      "bodyIndex": 291,
+      "text": "CHƯƠNG 4. KẾT QUẢ, KIỂM THỬ VÀ ĐÁNH GIÁ",
+      "pStyle": "Heading 2"
+    },
+    {
+      "bodyIndex": 318,
+      "text": "PHẦN III. NHẬN XÉT VÀ ĐỀ XUẤT",
+      "pStyle": "Heading 1"
+    },
+    {
+      "bodyIndex": 356,
+      "kind": "sectPr"
+    }
+  ],
+  "guideMatches": [
+    {
+      "page": 2,
+      "lines": [
+        "Font",
+        ", cỡ chữ",
+        "Times New Roman",
+        "Font"
+      ]
+    },
+    {
+      "page": 3,
+      "lines": [
+        "Font",
+        ", cỡ chữ",
+        "Times New Roman"
+      ]
+    },
+    {
+      "page": 4,
+      "lines": [
+        "Font Times New Roman, cỡ chữ 13, chữ đậm Bold, chữ"
+      ]
+    },
+    {
+      "page": 8,
+      "lines": [
+        "cỡ chữ, kiểu chữ, căn lề và Paragraph",
+        "Font size"
+      ]
+    },
+    {
+      "page": 9,
+      "lines": [
+        ">> Định dạng cỡ chữ, kiểu chữ, căn lề",
+        "Font size",
+        "dạng cỡ chữ, kiểu chữ, căn lề và Paragraph",
+        "Font size",
+        "- Có thể giảm dần font size từ 22 xuống 20",
+        "Định dạng cỡ chữ, kiểu chữ, căn lề và Paragraph",
+        "- Font size",
+        ">> Định dạng cỡ chữ, kiểu chữ, căn lề và",
+        "Font size",
+        "này xuống hoặc giảm cỡ chữ tên đề tài xuống 20 để đưa dòng này lên trang bìa. Đảm"
+      ]
+    },
+    {
+      "page": 11,
+      "lines": [
+        ">> Chỉnh font",
+        "Times New Roman, cỡ chữ 13"
+      ]
+    },
+    {
+      "page": 12,
+      "lines": [
+        "Font",
+        ", cỡ chữ",
+        "Times New Roman",
+        "2. Chèn bảng biểu",
+        "Ví dụ: Trong bài khóa luận, chèn 1 bảng gồm 4 dòng 4 cột như mẫu ở"
+      ]
+    },
+    {
+      "page": 13,
+      "lines": [
+        "Table",
+        "Insert Table",
+        "được bảng chưa có nội dung",
+        "-Bước 3: Nhập nội dung vào trong bảng",
+        "-Bước 4: Định dạng bảng như sau:",
+        "toàn bộ bảng",
+        "Home, chọn font chữ Times New",
+        ", cỡ chữ",
+        "Table",
+        "để lặp lại dòng tiêu đề khi bảng dài quá 1",
+        "tên cho bảng",
+        "trái của bảng >>",
+        ": chọn chữ “Bảng .",
+        "không có sẵn chữ “Bảng”",
+        "Bảng",
+        "của bảng: Chọn",
+        "Bảng\u00001.1",
+        ": Bôi đen dòng tên của bảng vừa chèn >> Vào tab"
+      ]
+    },
+    {
+      "page": 14,
+      "lines": [
+        "Đồ thị là công cụ cho phép minh họa bảng số liệu bằng hình ảnh.",
+        "font chữ",
+        ", cỡ chữ",
+        "Times New Roman"
+      ]
+    },
+    {
+      "page": 17,
+      "lines": [
+        "Table of Contents",
+        "Custom Table",
+        "Update entire table"
+      ]
+    },
+    {
+      "page": 18,
+      "lines": [
+        "Bước 10: Chèn danh mục bảng, hình, ảnh,",
+        "-Bước 2: Nhập tiêu đề trang là DANH MỤC BẢNG, HÌNH, ẢNH, ĐỒ",
+        "THỊ, viết chữ in hoa >> Định dạng: cỡ chữ 14, in đậm, căn",
+        "Table of Figures",
+        "Lặp\u0000lại\u0000thao\u0000tác\u0000ở\u0000bước\u00003\u0000để\u0000tạo\u0000danh\u0000mục\u0000Bảng,\u0000Đồ\u0000thị\u0000và\u0000Ảnh.",
+        "chọn font",
+        "Times New Roman"
+      ]
+    }
+  ],
+  "sampleTables": [
+    {
+      "table": 0,
+      "style": "Normal Table",
+      "rows": [
+        [
+          {
+            "text": "LỜI MỞ ĐẦU",
+            "paras": [
+              {
+                "align": "None",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "1",
+            "paras": [
+              {
+                "align": "RIGHT (2)",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "text": "PHẦN I. KHÁI QUÁT VỀ CÔNG TY TNHH FPT SMART CLOUD",
+            "paras": [
+              {
+                "align": "None",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "2",
+            "paras": [
+              {
+                "align": "RIGHT (2)",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "table": 1,
+      "style": "Normal Table",
+      "rows": [
+        [
+          {
+            "text": "Ký hiệu viết tắt",
+            "paras": [
+              {
+                "align": "None",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tên đầy đủ",
+            "paras": [
+              {
+                "align": "None",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "text": "AI",
+            "paras": [
+              {
+                "align": "None",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Trí tuệ nhân tạo (Artificial Intelligence)",
+            "paras": [
+              {
+                "align": "None",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "table": 2,
+      "style": "Normal Table",
+      "rows": [
+        [
+          {
+            "text": "Hình 1.1: Sơ đồ cơ cấu tổ chức FPT Smart Cloud",
+            "paras": [
+              {
+                "align": "None",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "3",
+            "paras": [
+              {
+                "align": "RIGHT (2)",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "text": "Hình 1.2: Sơ đồ cơ cấu tổ chức Khối Sản phẩm AI",
+            "paras": [
+              {
+                "align": "None",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "4",
+            "paras": [
+              {
+                "align": "RIGHT (2)",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": null,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "table": 3,
+      "style": "Normal Table",
+      "rows": [
+        [
+          {
+            "text": "Tiêu chí",
+            "paras": [
+              {
+                "align": "None",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Thông tin chi tiết",
+            "paras": [
+              {
+                "align": "None",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": null,
+                    "bold": true,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "text": "Tên doanh nghiệp",
+            "paras": [
+              {
+                "align": "None",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": 12.0,
+                    "bold": true,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": 12.0,
+                    "bold": true,
+                    "italic": null
+                  },
+                  {
+                    "font": null,
+                    "size": 12.0,
+                    "bold": true,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Công ty TNHH FPT Smart Cloud (FPT Smart Cloud Co., Ltd.)",
+            "paras": [
+              {
+                "align": "None",
+                "runs": [
+                  {
+                    "font": null,
+                    "size": 12.0,
+                    "bold": null,
+                    "italic": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  ]
+}

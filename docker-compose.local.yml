@@ -32,6 +32,7 @@ services:
       PORT: 3002
       ATTENDANCE_DB_PATH: /data/attendance.db
       INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN}
+      DEMO_CLOCK_ENABLED: "true"
     volumes: [attendance_data:/data]
     restart: unless-stopped
 
@@ -56,6 +57,7 @@ services:
       INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN}
       SESSION_SECRET: ${SESSION_SECRET}
       SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-false}
+      DEMO_CLOCK_ENABLED: "true"
     depends_on: [identity, attendance, ai-adapter]
     ports: ["8600:8080"]
     restart: unless-stopped

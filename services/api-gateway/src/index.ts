@@ -12,6 +12,7 @@ function required(name: string): string { const value = process.env[name]; if (!
 const internalToken = required("INTERNAL_SERVICE_TOKEN");
 const sessionSecret = required("SESSION_SECRET");
 const sessionCookieSecure = process.env.SESSION_COOKIE_SECURE === "true";
+const demoClockEnabled = process.env.DEMO_CLOCK_ENABLED === "true";
 
 type Session = { id: string; role: Role; fullName: string };
 declare global { namespace Express { interface Request { user?: Session; } } }
@@ -119,6 +120,24 @@ app.get("/api/sections/:id/students", authenticated, allowed("teacher", "admin")
   if (!upstream.ok) return response.status(upstream.status).json(data);
   const names = new Map((await people.json() as { users: User[] }).users.map((user) => [user.id, user.fullName]));
   response.json({ students: data.students.map((student) => ({ ...student, fullName: names.get(student.studentId) ?? student.studentId })) });
+});
+app.get("/api/sections/:id/demo-clock", authenticated, allowed("teacher", "admin"), async (request, response) => {
+  if (!demoClockEnabled) return response.status(404).json({ error: "Demo clock is disabled" });
+  const sectionId = validSectionId(request.params.id);
+  if (!sectionId) return response.status(400).json({ error: "Invalid section" });
+  if (!(await managesSection(request.user!, sectionId))) return response.status(403).json({ error: "Section is not assigned" });
+  const upstream = await internal(`${attendanceUrl}/internal/sections/${sectionId}/demo-clock`);
+  response.status(upstream.status).json(await upstream.json());
+});
+app.post("/api/sections/:id/demo-clock", authenticated, allowed("teacher", "admin"), async (request, response) => {
+  if (!demoClockEnabled) return response.status(404).json({ error: "Demo clock is disabled" });
+  const sectionId = validSectionId(request.params.id);
+  if (!sectionId) return response.status(400).json({ error: "Invalid section" });
+  if (!(await managesSection(request.user!, sectionId))) return response.status(403).json({ error: "Section is not assigned" });
+  const action = request.body?.action;
+  if (!["start", "advance", "reset"].includes(action)) return response.status(400).json({ error: "Invalid demo clock action" });
+  const upstream = await internal(`${attendanceUrl}/internal/sections/${sectionId}/demo-clock`, { method: "POST", body: JSON.stringify({ action }) });
+  response.status(upstream.status).json(await upstream.json());
 });
 app.post("/api/attendance", authenticated, allowed("teacher", "admin"), async (request, response) => {
   const sectionId = validSectionId(request.body?.sectionId);

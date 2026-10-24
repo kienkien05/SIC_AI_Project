@@ -1,0 +1,122 @@
+{
+  "styles": [
+    {
+      "name": "Normal",
+      "font": null,
+      "size": null,
+      "bold": null,
+      "italic": null,
+      "alignment": "JUSTIFY (3)",
+      "line_spacing": "1.3",
+      "space_after": "76200"
+    },
+    {
+      "name": "DoanVB",
+      "font": null,
+      "size": null,
+      "bold": null,
+      "italic": null,
+      "alignment": "None",
+      "line_spacing": "None",
+      "space_after": "None"
+    },
+    {
+      "name": "Caption",
+      "font": null,
+      "size": null,
+      "bold": null,
+      "italic": true,
+      "alignment": "CENTER (1)",
+      "line_spacing": "None",
+      "space_after": "None"
+    },
+    {
+      "name": "TableofFigures",
+      "font": null,
+      "size": null,
+      "bold": null,
+      "italic": null,
+      "alignment": "None",
+      "line_spacing": "None",
+      "space_after": "0"
+    },
+    {
+      "name": "Heading 1",
+      "font": "Times New Roman",
+      "size": 13.0,
+      "bold": true,
+      "italic": null,
+      "alignment": "JUSTIFY (3)",
+      "line_spacing": "None",
+      "space_after": "152400"
+    },
+    {
+      "name": "Heading 2",
+      "font": "Times New Roman",
+      "size": 13.0,
+      "bold": true,
+      "italic": null,
+      "alignment": "JUSTIFY (3)",
+      "line_spacing": "None",
+      "space_after": "76200"
+    }
+  ],
+  "paragraph_samples": {
+    "PHẦN I. KHÁI QUÁT VỀ ĐƠN VỊ THỰC TẬP\t1": {
+      "style": "toc 1",
+      "align": "None",
+      "runs": []
+    },
+    "CHƯƠNG 1. CƠ SỞ LÝ THUYẾT\t6": {
+      "style": "toc 2",
+      "align": "None",
+      "runs": []
+    },
+    "PHẦN I. KHÁI QUÁT VỀ ĐƠN VỊ THỰC TẬP": {
+      "style": "Heading 1",
+      "align": "None",
+      "runs": [
+        {
+          "text": "PHẦN I. KHÁI QUÁT VỀ ĐƠN VỊ THỰC TẬP",
+          "font": null,
+          "size": null,
+          "bold": null,
+          "italic": null
+        }
+      ]
+    },
+    "Bảng 1.1. Lĩnh vực hoạt động và sản phẩm": {
+      "style": "DoanVB",
+      "align": "CENTER (1)",
+      "runs": [
+        {
+          "text": "Bảng 1.",
+          "font": null,
+          "size": null,
+          "bold": null,
+          "italic": true
+        },
+        {
+          "text": "1",
+          "font": null,
+          "size": null,
+          "bold": null,
+          "italic": true
+        }
+      ]
+    },
+    "CHƯƠNG 1. CƠ SỞ LÝ THUYẾT": {
+      "style": "Heading 2",
+      "align": "None",
+      "runs": [
+        {
+          "text": "CHƯƠNG 1. CƠ SỞ LÝ THUYẾT",
+          "font": null,
+          "size": null,
+          "bold": null,
+          "italic": null
+        }
+      ]
+    }
+  }
+}

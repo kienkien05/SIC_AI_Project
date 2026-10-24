@@ -4,11 +4,14 @@ import { DatabaseSync } from "node:sqlite";
 import express from "express";
 import type { AttendanceStatus } from "@spas/contracts";
 import { requireInternal } from "@spas/service-security";
+import { demoAttendanceStatus, updateDemoClock, type DemoClockAction } from "./demo-clock.js";
 import { seedCourses, seedEnrollments, seedSections } from "./seed.js";
 
 const file = process.env.ATTENDANCE_DB_PATH ?? "./runtime/attendance.db";
 mkdirSync(dirname(file), { recursive: true });
 const db = new DatabaseSync(file);
+const demoClockEnabled = process.env.DEMO_CLOCK_ENABLED === "true";
+const demoMinutesAfterStart = new Map<number, number>();
 const periods: Record<number, [string, string]> = { 1: ["07:00", "07:50"], 2: ["07:55", "08:45"], 3: ["08:50", "09:40"], 4: ["09:50", "10:40"], 5: ["10:45", "11:35"], 6: ["11:40", "12:30"], 7: ["13:30", "14:20"], 8: ["14:25", "15:15"], 9: ["15:20", "16:10"], 10: ["16:20", "17:10"], 11: ["17:15", "18:05"], 12: ["18:20", "19:10"], 13: ["19:15", "20:05"] };
 db.exec(`
   CREATE TABLE IF NOT EXISTS courses (code TEXT PRIMARY KEY, title TEXT NOT NULL);
@@ -42,12 +45,18 @@ function startMinute(startTime: string): number { const [hour, minute] = startTi
 function sectionTiming(sectionId: number): SectionTiming | undefined { return db.prepare("SELECT id,weekday,start_time FROM sections WHERE id=?").get(sectionId) as SectionTiming | undefined; }
 function automaticStatus(sectionId: number, now = new Date()): AttendanceStatus | undefined {
   const section = sectionTiming(sectionId); if (!section) return undefined;
+  const demoMinute = demoMinutesAfterStart.get(sectionId);
+  if (demoMinute !== undefined) return demoAttendanceStatus(demoMinute);
   const clock = vietnamClock(now); if (clock.weekday !== section.weekday || clock.minute <= startMinute(section.start_time)) return "present";
   return clock.minute <= startMinute(section.start_time) + 15 ? "late" : "absent";
 }
 function finalizeAbsences(sectionId: number, now = new Date()): void {
   const section = sectionTiming(sectionId); if (!section) return;
-  const clock = vietnamClock(now); if (clock.weekday !== section.weekday || clock.minute <= startMinute(section.start_time) + 15) return;
+  const clock = vietnamClock(now);
+  const demoMinute = demoMinutesAfterStart.get(sectionId);
+  if (demoMinute === undefined) {
+    if (clock.weekday !== section.weekday || clock.minute <= startMinute(section.start_time) + 15) return;
+  } else if (demoMinute <= 15) return;
   db.prepare("INSERT OR IGNORE INTO attendance(section_id,student_id,date,status,first_seen_at,proof_image) SELECT section_id,student_id,?, 'absent', NULL, NULL FROM enrollments WHERE section_id=?").run(clock.date, sectionId);
 }
 function finalizeCurrentAbsences(): void {
@@ -102,6 +111,26 @@ app.get("/internal/sections/:id/students", (request, response) => {
   const date = vietnamClock().date;
   const students = db.prepare("SELECT e.student_id AS studentId,a.status,a.first_seen_at AS firstSeenAt FROM enrollments e LEFT JOIN attendance a ON a.section_id=e.section_id AND a.student_id=e.student_id AND a.date=? WHERE e.section_id=? ORDER BY e.student_id").all(date, sectionId);
   response.json({ students });
+});
+app.get("/internal/sections/:id/demo-clock", (request, response) => {
+  if (!demoClockEnabled) return response.status(404).json({ error: "Demo clock is disabled" });
+  const sectionId = Number(request.params.id);
+  if (!Number.isSafeInteger(sectionId) || !sectionTiming(sectionId)) return response.status(404).json({ error: "Section not found" });
+  response.json({ enabled: true, minutesAfterStart: demoMinutesAfterStart.get(sectionId) ?? null });
+});
+app.post("/internal/sections/:id/demo-clock", (request, response) => {
+  if (!demoClockEnabled) return response.status(404).json({ error: "Demo clock is disabled" });
+  const sectionId = Number(request.params.id);
+  const action = request.body?.action as DemoClockAction | undefined;
+  if (!Number.isSafeInteger(sectionId) || !sectionTiming(sectionId)) return response.status(404).json({ error: "Section not found" });
+  if (action !== "start" && action !== "advance" && action !== "reset") return response.status(400).json({ error: "Invalid demo clock action" });
+  const current = demoMinutesAfterStart.get(sectionId) ?? null;
+  let minutesAfterStart: number | null;
+  try { minutesAfterStart = updateDemoClock(current, action); }
+  catch (cause) { return response.status(409).json({ error: cause instanceof Error ? cause.message : "Demo clock is not started" }); }
+  if (minutesAfterStart === null) demoMinutesAfterStart.delete(sectionId);
+  else demoMinutesAfterStart.set(sectionId, minutesAfterStart);
+  response.json({ enabled: true, minutesAfterStart });
 });
 app.post("/internal/attendance", (request, response) => {
   const { sectionId, studentId, status = "present", automatic = false, proofImage } = request.body as { sectionId?: number; studentId?: string; status?: AttendanceStatus; automatic?: boolean; proofImage?: unknown };

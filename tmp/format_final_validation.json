@@ -1,0 +1,22 @@
+{
+  "table_count": 26,
+  "formatted_runs": 412,
+  "font_violations": [],
+  "font_violation_count": 0,
+  "chapter_forced_breaks": [],
+  "meta_line_present": false,
+  "table_caption_paragraphs": 24,
+  "figure_caption_paragraphs": 2,
+  "figure_captions_italic_centered": [
+    {
+      "text": "Hình 1.1. Sơ đồ tổ chức FPT Smart Cloud năm 2026 [11]",
+      "italic": true,
+      "centered": true
+    },
+    {
+      "text": "Hình 1.2. Cơ cấu tổ chức Khối Sản phẩm AI năm 2026 [11]",
+      "italic": true,
+      "centered": true
+    }
+  ]
+}

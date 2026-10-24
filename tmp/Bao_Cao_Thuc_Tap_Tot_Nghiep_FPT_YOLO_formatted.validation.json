@@ -1,0 +1,13 @@
+{
+  "tables": 26,
+  "inline_images": 2,
+  "removed_chapter_breaks": [
+    "CHƯƠNG 1. CƠ SỞ LÝ THUYẾT",
+    "CHƯƠNG 2. PHÂN TÍCH VÀ THIẾT KẾ QUY TRÌNH",
+    "CHƯƠNG 3. THỰC HIỆN GÁN NHÃN VÀ TINH CHỈNH MÔ HÌNH",
+    "CHƯƠNG 4. KẾT QUẢ, KIỂM THỬ VÀ ĐÁNH GIÁ"
+  ],
+  "remaining_chapter_breaks": [],
+  "removed_meta_paragraphs": 1,
+  "figure_captions": 4
+}

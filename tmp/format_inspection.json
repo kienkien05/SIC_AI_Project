@@ -1,0 +1,2344 @@
+{
+  "headings": [
+    {
+      "i": 33,
+      "text": "PHẦN I. KHÁI QUÁT VỀ ĐƠN VỊ THỰC TẬP\t1",
+      "style": "toc 1",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 39,
+      "text": "PHẦN II. GÁN NHÃN DỮ LIỆU VÀ TINH CHỈNH MÔ HÌNH YOLO\t5",
+      "style": "toc 1",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 41,
+      "text": "CHƯƠNG 1. CƠ SỞ LÝ THUYẾT\t6",
+      "style": "toc 2",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 53,
+      "text": "CHƯƠNG 2. PHÂN TÍCH VÀ THIẾT KẾ QUY TRÌNH\t14",
+      "style": "toc 2",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 63,
+      "text": "CHƯƠNG 3. THỰC HIỆN GÁN NHÃN VÀ TINH CHỈNH MÔ HÌNH\t21",
+      "style": "toc 2",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 69,
+      "text": "CHƯƠNG 4. KẾT QUẢ, KIỂM THỬ VÀ ĐÁNH GIÁ\t26",
+      "style": "toc 2",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 75,
+      "text": "PHẦN III. NHẬN XÉT VÀ ĐỀ XUẤT\t29",
+      "style": "toc 1",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 79,
+      "text": "KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN\t32",
+      "style": "toc 1",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 101,
+      "text": "PHẦN I. KHÁI QUÁT VỀ ĐƠN VỊ THỰC TẬP",
+      "style": "Heading 1",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 125,
+      "text": "PHẦN II. GÁN NHÃN DỮ LIỆU VÀ TINH CHỈNH MÔ HÌNH YOLO",
+      "style": "Heading 1",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 129,
+      "text": "CHƯƠNG 1. CƠ SỞ LÝ THUYẾT",
+      "style": "Heading 2",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 193,
+      "text": "CHƯƠNG 2. PHÂN TÍCH VÀ THIẾT KẾ QUY TRÌNH",
+      "style": "Heading 2",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 233,
+      "text": "CHƯƠNG 3. THỰC HIỆN GÁN NHÃN VÀ TINH CHỈNH MÔ HÌNH",
+      "style": "Heading 2",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 266,
+      "text": "CHƯƠNG 4. KẾT QUẢ, KIỂM THỬ VÀ ĐÁNH GIÁ",
+      "style": "Heading 2",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 291,
+      "text": "PHẦN III. NHẬN XÉT VÀ ĐỀ XUẤT",
+      "style": "Heading 1",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    },
+    {
+      "i": 313,
+      "text": "KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN",
+      "style": "Heading 1",
+      "pageBefore": false,
+      "explicitPageBreaks": 0,
+      "keepNext": false
+    }
+  ],
+  "tables": [
+    {
+      "table": 0,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Từ viết tắt",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Tên đầy đủ và giải thích",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "AI",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Artificial Intelligence, trí tuệ nhân tạo",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 1,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Từ tiếng Anh",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Giải thích dễ hiểu",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Annotation / Label",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Đánh dấu lớp và vị trí đối tượng trên ảnh.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 2,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Nhóm hoạt động",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Cách hiểu đơn giản",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Điện toán đám mây",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Cung cấp tài nguyên máy tính và lưu trữ qua mạng.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 3,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Nhóm chức năng",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Vai trò khái quát",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Phát triển sản phẩm và kỹ thuật",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Xây dựng, kiểm thử và duy trì sản phẩm, nền tảng hoặc dịch vụ.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 4,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Thông tin",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Nội dung",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Bộ phận",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Trung tâm Sản phẩm Vision, Khối Sản phẩm AI.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 5,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Kỳ báo cáo",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Thông tin được cung cấp",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Nhận xét",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Năm 2024",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Apps Run The World ước tính doanh thu FPT Smart Cloud khoảng 20 triệu USD [8].",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Ước tính từ cơ sở dữ liệu doanh nghiệp; không phải số liệu tài chính kiểm toán do công ty công bố.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 6,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Nội dung cần thống nhất",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Câu hỏi cần trả lời",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Định nghĩa lớp",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Đối tượng nào thuộc lớp này và đối tượng nào không thuộc lớp?",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 7,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Lỗi nhãn",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Mô hình có thể học sai điều gì",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Chọn nhầm class",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Mô hình nhận ví dụ của một lớp như thể đó là lớp khác.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 8,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Phần",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Vai trò dễ hiểu",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Backbone",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Rút ra đặc điểm từ ảnh, từ cạnh đơn giản đến cấu trúc phức tạp hơn.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 9,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Cách bắt đầu",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Mô hình nhận được gì",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Điểm cần cân nhắc",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Khởi tạo ngẫu nhiên",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Trọng số ban đầu chưa học từ ảnh.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Có thể cần nhiều dữ liệu và thời gian hơn để học các đặc điểm cơ bản.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 10,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Thông số",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Giải thích đơn giản",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Ảnh hưởng thường gặp",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Trọng số khởi tạo",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Bộ trọng số đã học trước dùng làm điểm bắt đầu.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Ảnh hưởng kiến thức ban đầu của mô hình.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 11,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Chỉ số",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Cách hiểu ngắn",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Precision",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Trong các đối tượng mô hình dự đoán, tỷ lệ dự đoán đúng là bao nhiêu.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 12,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Thành phần",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Mô tả",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Ảnh đầu vào",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Ảnh hoặc khung hình được cung cấp cho bài toán theo quyền truy cập được cấp.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 13,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Tình huống",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Cách xử lý cần được thống nhất",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Đối tượng nhìn rõ",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Gán đúng lớp và vẽ hộp theo quy tắc.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 14,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Bước kiểm tra",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Việc cần xem",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Kết quả",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Kiểm tra ảnh",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Ảnh đọc được, đúng thư mục và không trùng ngoài quy tắc.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Danh sách ảnh có thể sử dụng hoặc cần xử lý.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 15,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Bước",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Hoạt động",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Câu hỏi kiểm tra",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "1",
+              "align": "RIGHT (2)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Xác nhận mục tiêu và lớp cần phát hiện.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Đầu ra mong muốn đã được mô tả rõ chưa?",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 16,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Bước",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Người/Thành phần",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Công việc",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Kết quả chuyển tiếp",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "1",
+              "align": "RIGHT (2)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Người phụ trách bài toán",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Mô tả lớp và điều kiện cần phát hiện.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Hướng dẫn dữ liệu.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 17,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Rủi ro",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Ảnh hưởng",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Cách hạn chế",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Quy tắc lớp chưa rõ",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Người gán nhãn tạo nhãn khác nhau.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Thống nhất định nghĩa và ví dụ trước khi làm số lượng lớn.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 18,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Nhóm công cụ",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Mục đích",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Cách trình bày trong báo cáo",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Công cụ gán nhãn",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Vẽ hộp, chọn lớp và lưu nhãn.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Sử dụng công cụ theo hướng dẫn của bộ phận; không nêu tên chưa được xác nhận để công bố.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 19,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Nhóm công việc",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Nội dung tham gia",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Kiến thức áp dụng",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Gán nhãn dữ liệu",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Đánh dấu đối tượng và lớp theo hướng dẫn được giao.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Định nghĩa lớp, bounding box và định dạng nhãn.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 20,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Bước",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Việc thực hiện",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Điều em rút ra",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "1",
+              "align": "RIGHT (2)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Đọc hướng dẫn lớp và xem ví dụ đã được duyệt.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Cần hiểu định nghĩa trước khi bắt đầu làm nhiều ảnh.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 21,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Giai đoạn",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Việc thực hiện",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Nội dung cần theo dõi",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Chuẩn bị",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Kiểm tra ảnh, nhãn, đường dẫn và danh sách lớp.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Nhãn lỗi, ảnh trùng và sai cấu trúc thư mục.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 22,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Dấu hiệu",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Nguyên nhân có thể",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Hướng kiểm tra",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Bỏ sót đối tượng",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Đối tượng nhỏ, bị che hoặc ít xuất hiện trong dữ liệu.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Kiểm tra ảnh và nhãn của trường hợp tương tự.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 23,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Thông tin cần ghi",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Ý nghĩa khi xem lại",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Phiên bản dataset và danh sách class",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Biết mô hình đã học từ bộ ảnh, nhãn và lớp nào.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 24,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Nhóm việc",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Điều em học được",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Gán nhãn",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Nhãn biến yêu cầu bài toán thành ví dụ mà mô hình có thể học; tính nhất quán quan trọng hơn thao tác nhanh.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "table": 25,
+      "style": "Normal Table",
+      "rows": [
+        [
+          [
+            {
+              "text": "Kịch bản",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Điều cần xem",
+              "align": "CENTER (1)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": true,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "Đối tượng rõ, nằm trọn trong ảnh",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "text": "Hộp có bao đúng và lớp có chính xác không.",
+              "align": "LEFT (0)",
+              "style": "Normal",
+              "runs": [
+                {
+                  "font": null,
+                  "size": null,
+                  "bold": null,
+                  "italic": null
+                }
+              ]
+            }
+          ]
+        ]
+      ]
+    }
+  ]
+}

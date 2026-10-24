@@ -1,0 +1,146 @@
+[
+  {
+    "index": 12,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "HÀ NỘI - 2026",
+    "next": "BỘ GIÁO DỤC VÀ ĐÀO TẠO"
+  },
+  {
+    "index": 25,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "HÀ NỘI - 2026",
+    "next": "LỜI CẢM ƠN"
+  },
+  {
+    "index": 31,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "Trương Trung Kiên",
+    "next": "MỤC LỤC"
+  },
+  {
+    "index": 81,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "TÀI LIỆU THAM KHẢO\t33",
+    "next": "DANH MỤC VIẾT TẮT"
+  },
+  {
+    "index": 92,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "DANH MỤC TỪ TIẾNG ANH CHUYÊN NGÀNH",
+    "next": "DANH MỤC CÁC BẢNG BIỂU, HÌNH VẼ, ĐỒ THỊ, CÔNG THỨC"
+  },
+  {
+    "index": 94,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "DANH MỤC CÁC BẢNG BIỂU, HÌNH VẼ, ĐỒ THỊ, CÔNG THỨC",
+    "next": "LỜI MỞ ĐẦU"
+  },
+  {
+    "index": 100,
+    "text": "",
+    "pageBreak": 0,
+    "pageBefore": false,
+    "sectionBreak": true,
+    "previous": "Báo cáo gồm ba phần. Phần I giới thiệu khái quát về FPT Smart Cloud dựa trên tài liệu hội nhập nhân ",
+    "next": "PHẦN I. KHÁI QUÁT VỀ ĐƠN VỊ THỰC TẬP"
+  },
+  {
+    "index": 118,
+    "text": "1.5. Tình hình hoạt động trong hai năm gần nhất",
+    "pageBreak": 0,
+    "pageBefore": true,
+    "sectionBreak": false,
+    "previous": "Phần II trình bày kiến thức và quy trình liên quan đến hai nhóm nhiệm vụ này. Các ví dụ được viết ở ",
+    "next": "Mẫu báo cáo yêu cầu giới thiệu hoạt động của đơn vị trong hai năm gần nhất. Tài liệu hội nhập không "
+  },
+  {
+    "index": 124,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "Phần này có thể được cập nhật khi đơn vị cung cấp số liệu đã xác nhận hoặc nguồn công khai được phép",
+    "next": "PHẦN II. GÁN NHÃN DỮ LIỆU VÀ TINH CHỈNH MÔ HÌNH YOLO"
+  },
+  {
+    "index": 128,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "Chuyên đề tập trung vào hai công việc em tham gia tại FPT: gán nhãn dữ liệu và tinh chỉnh mô hình YO",
+    "next": "CHƯƠNG 1. CƠ SỞ LÝ THUYẾT"
+  },
+  {
+    "index": 192,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "Mô hình chỉ đưa ra dự đoán dựa trên dữ liệu đã học. Người phụ trách vẫn cần xem lại các trường hợp k",
+    "next": "CHƯƠNG 2. PHÂN TÍCH VÀ THIẾT KẾ QUY TRÌNH"
+  },
+  {
+    "index": 232,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "Bảng 2.13. Công cụ sử dụng - Nhóm công cụ",
+    "next": "CHƯƠNG 3. THỰC HIỆN GÁN NHÃN VÀ TINH CHỈNH MÔ HÌNH"
+  },
+  {
+    "index": 265,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "Quy trình này giúp nối công việc gán nhãn với huấn luyện. Khi ảnh dự đoán sai, người thực hiện có th",
+    "next": "CHƯƠNG 4. KẾT QUẢ, KIỂM THỬ VÀ ĐÁNH GIÁ"
+  },
+  {
+    "index": 290,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "Chỉ đưa số liệu hoặc ảnh công ty vào báo cáo sau khi có xác nhận.",
+    "next": "PHẦN III. NHẬN XÉT VÀ ĐỀ XUẤT"
+  },
+  {
+    "index": 312,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "4. Đối với đánh giá: Kết hợp chỉ số với việc xem ảnh dự đoán sai, không kết luận chất lượng chỉ từ m",
+    "next": "KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN"
+  },
+  {
+    "index": 317,
+    "text": "",
+    "pageBreak": 1,
+    "pageBefore": false,
+    "sectionBreak": false,
+    "previous": "Trong thời gian tới, em muốn tiếp tục học về xử lý ảnh, thiết kế tập dữ liệu, phân tích lỗi và triển",
+    "next": "TÀI LIỆU THAM KHẢO"
+  }
+]
